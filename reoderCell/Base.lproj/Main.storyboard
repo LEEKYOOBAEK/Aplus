@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="reoderCell" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rUh-2K-IgD">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="65c-01-Npl">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="65c-01-Npl" id="oxu-Ml-8tW">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="T2R-31-Y5s"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="kBX-iX-XEs"/>
+                                </connections>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cg-lA-Q9x">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="fbB-LS-aU3"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Number" id="hTi-XF-Sjs">
+                                        <barButtonItem key="rightBarButtonItem" title="edit" id="c4K-AY-xwL">
+                                            <connections>
+                                                <action selector="edit:" destination="BYZ-38-t0r" id="orn-MA-C1r"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6cg-lA-Q9x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2Rc-3T-CiL"/>
+                            <constraint firstItem="6cg-lA-Q9x" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Blk-5w-hXc"/>
+                            <constraint firstItem="rUh-2K-IgD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="P0F-qT-XE9"/>
+                            <constraint firstItem="rUh-2K-IgD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="SJ9-M1-ChH"/>
+                            <constraint firstItem="rUh-2K-IgD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Uzd-rY-Afq"/>
+                            <constraint firstItem="rUh-2K-IgD" firstAttribute="top" secondItem="6cg-lA-Q9x" secondAttribute="bottom" id="atr-kO-fdW"/>
+                            <constraint firstItem="rUh-2K-IgD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gaE-0X-GvO"/>
+                            <constraint firstItem="rUh-2K-IgD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="j7v-hI-Zim"/>
+                            <constraint firstItem="rUh-2K-IgD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="n6i-dX-aQq"/>
+                            <constraint firstItem="rUh-2K-IgD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tqQ-qo-yQA"/>
+                            <constraint firstItem="6cg-lA-Q9x" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vau-te-ZMu"/>
+                            <constraint firstItem="rUh-2K-IgD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="yGV-qF-o90"/>
+                            <constraint firstItem="rUh-2K-IgD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="zbo-TZ-Q4b"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="editButton" destination="c4K-AY-xwL" id="bF0-8a-dBU"/>
+                        <outlet property="myTableView" destination="rUh-2K-IgD" id="bGd-HL-P6m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
+        </scene>
+    </scenes>
+</document>
