@@ -10,21 +10,25 @@ import UIKit
 import AVFoundation
 
 
-class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
+class ViewController: UIViewController, AVAudioPlayerDelegate  , AVAudioRecorderDelegate {
     
     
     var audioPlayer : AVAudioPlayer!
     
     var audioFile : URL!
-    
+          
     let MAX_VOlUME : Float = 10.0
     
     var progressTimer : Timer!
     
+    var repeatTimer = Timer()
+    
     let timePlayerSelector:Selector = #selector(ViewController.updatePlayTime)
     let timeRecordSelector:Selector = #selector(ViewController.updateRecordTime)
-  
+    
 
+
+ 
     @IBOutlet weak var btnBackward: UIButton!
     @IBOutlet weak var btnForward: UIButton!
     
@@ -56,7 +60,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
         btnRecord.isEnabled = false
         lblRecordTime.isEnabled = false
         audioPlayer.enableRate = true
-        
+         
             
     }else {
     initRecord()
@@ -107,11 +111,20 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
             try session.setActive(true)
         }catch let error as NSError {
             print("Error-setActive: \(error)")
-            
         }
         
-        
     }
+    @objc func audioRouteChanged(note: Notification) {
+        if let userInfo = note.userInfo {
+            if let reason = userInfo[AVAudioSessionRouteChangeReasonKey] as? Int  {
+                if reason == AVAudioSessionRouteChangeReason.oldDeviceUnavailable.hashValue {
+                    // headphones plugged out
+                    audioPlayer.stop()
+                }
+            }
+        }
+    }
+    
     //오디오 재생을 위한 초기화
     func initPlay() {
         
@@ -127,13 +140,14 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
         audioPlayer.delegate = self
         audioPlayer.prepareToPlay()
         audioPlayer.volume = slVolume.value
-        
+       
         lblEndTime.text = convertNSTimeInterval2String(audioPlayer.duration)
         lblCurrentTime.text = convertNSTimeInterval2String(0)
         setPlayButtons(true, pause: false, stop: false)
         
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .duckOthers)
             print("Playback OK")
             try AVAudioSession.sharedInstance().setActive(true)
             print("Session is Active")
@@ -142,6 +156,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
         }
         
         
+        NotificationCenter.default.addObserver(self, selector: #selector(audioRouteChanged), name: .AVAudioSessionRouteChange, object: nil)
     }
     func setPlayButtons(_ play:Bool, pause: Bool, stop: Bool) {
         btnPlay.isEnabled = play
@@ -169,6 +184,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
         setPlayButtons(false, pause: true, stop: true)
         progressTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: timePlayerSelector, userInfo: nil, repeats: true)
     }
+    
     @IBAction func btnPauseAudio(_ sender: UIButton) {
         
         audioPlayer.pause()
@@ -258,4 +274,5 @@ class ViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDe
         audioPlayer.currentTime -= 5.0
         
     }
+   
 }

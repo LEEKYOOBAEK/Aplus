@@ -13,6 +13,7 @@
 		9055527521148A59001F45D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9055527421148A59001F45D7 /* Assets.xcassets */; };
 		9055527821148A59001F45D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9055527621148A59001F45D7 /* LaunchScreen.storyboard */; };
 		9055528021148D32001F45D7 /* 조윤지 미팅어플.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9055527F21148D32001F45D7 /* 조윤지 미팅어플.m4a */; };
+		9055F93D2119D6B50072F372 /* 딩동.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9055F93C2119D6B50072F372 /* 딩동.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9055527721148A59001F45D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9055527921148A59001F45D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9055527F21148D32001F45D7 /* 조윤지 미팅어플.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "조윤지 미팅어플.m4a"; sourceTree = "<group>"; };
+		9055F93C2119D6B50072F372 /* 딩동.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "딩동.m4a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				9055526D21148A58001F45D7 /* AppDelegate.swift */,
 				9055526F21148A58001F45D7 /* ViewController.swift */,
 				9055527121148A58001F45D7 /* Main.storyboard */,
+				9055F93C2119D6B50072F372 /* 딩동.m4a */,
 				9055527F21148D32001F45D7 /* 조윤지 미팅어플.m4a */,
 				9055527421148A59001F45D7 /* Assets.xcassets */,
 				9055527621148A59001F45D7 /* LaunchScreen.storyboard */,
@@ -133,6 +136,7 @@
 				9055527821148A59001F45D7 /* LaunchScreen.storyboard in Resources */,
 				9055527521148A59001F45D7 /* Assets.xcassets in Resources */,
 				9055527321148A58001F45D7 /* Main.storyboard in Resources */,
+				9055F93D2119D6B50072F372 /* 딩동.m4a in Resources */,
 				9055528021148D32001F45D7 /* 조윤지 미팅어플.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
