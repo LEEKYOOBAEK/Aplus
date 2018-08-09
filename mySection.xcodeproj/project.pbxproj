@@ -13,7 +13,7 @@
 		D029EA05211AF22C005419CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D029EA04211AF22C005419CB /* Assets.xcassets */; };
 		D029EA08211AF22C005419CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D029EA06211AF22C005419CB /* LaunchScreen.storyboard */; };
 		D029EA10211AF32C005419CB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029EA0F211AF32C005419CB /* TableViewController.swift */; };
-		D029EA14211AF770005419CB /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029EA13211AF770005419CB /* File.swift */; };
+		D029EA14211AF770005419CB /* RecordFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029EA13211AF770005419CB /* RecordFile.swift */; };
 		D029EA16211AFB25005419CB /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029EA15211AFB25005419CB /* DetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +26,7 @@
 		D029EA07211AF22C005419CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D029EA09211AF22C005419CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D029EA0F211AF32C005419CB /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		D029EA13211AF770005419CB /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		D029EA13211AF770005419CB /* RecordFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFile.swift; sourceTree = "<group>"; };
 		D029EA15211AFB25005419CB /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,7 +67,7 @@
 				D029EA09211AF22C005419CB /* Info.plist */,
 				D029EA01211AF22A005419CB /* mySection.xcdatamodeld */,
 				D029EA0F211AF32C005419CB /* TableViewController.swift */,
-				D029EA13211AF770005419CB /* File.swift */,
+				D029EA13211AF770005419CB /* RecordFile.swift */,
 				D029EA15211AFB25005419CB /* DetailTableViewController.swift */,
 			);
 			path = mySection;
@@ -146,7 +146,7 @@
 			files = (
 				D029EA03211AF22A005419CB /* mySection.xcdatamodeld in Sources */,
 				D029EA16211AFB25005419CB /* DetailTableViewController.swift in Sources */,
-				D029EA14211AF770005419CB /* File.swift in Sources */,
+				D029EA14211AF770005419CB /* RecordFile.swift in Sources */,
 				D029E9FB211AF22A005419CB /* AppDelegate.swift in Sources */,
 				D029EA10211AF32C005419CB /* TableViewController.swift in Sources */,
 			);
@@ -293,6 +293,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 95CRCSRLZ7;
 				INFOPLIST_FILE = mySection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -310,6 +311,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 95CRCSRLZ7;
 				INFOPLIST_FILE = mySection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
