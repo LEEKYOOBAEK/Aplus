@@ -13,10 +13,10 @@ class TableViewController: UITableViewController {
     
     struct Section {
         var sectionName:String
-        var records:[RecordFile]        //array안 클래스
+        var records:[RecordFile]
     }
     
-    var sectionArray:[Section] = [Section(sectionName: "폴더", records: []),Section(sectionName: "음성녹음", records: [])]        //array안에 구조체, 구조체 안에 records는 array안에 클래스
+    var sectionArray:[Section] = [Section(sectionName: "폴더", records: []),Section(sectionName: "음성녹음", records: [])]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +31,7 @@ class TableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    // +버튼 누르면 alert
-    @IBAction func addFolder(_ sender: Any)
-    {
+    @IBAction func addFolder(_ sender: Any) {
         let alert = UIAlertController(title: "폴더 생성", message: "폴더의 이름을 넣어주세요", preferredStyle: .alert)
         
         alert.addTextField { (textField) in
@@ -41,12 +39,10 @@ class TableViewController: UITableViewController {
         }
        
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            if alert.textFields?[0].text == ""          //폴더에 아무것도 입력하지 않으면 "음성녹음(번호)"라는 이름으로 저장        //Q. 서브타이틀은 nil?? 경우의 수 많아져서?
-            {
+            if alert.textFields?[0].text == "" {
                 let record1 = RecordFile(fileName: "음성녹음\(self.sectionArray[0].records.count + 1)", fileSubtitle: nil, fileDate: 0, fileLength: 0)
                 self.sectionArray[0].records.append(record1)
-            }else       //사용자가 폴더에 이름 입력하면
-            {
+            }else {
                 let record1 = RecordFile(fileName: (alert.textFields?[0].text)!, fileSubtitle: nil, fileDate: 0, fileLength: 0)
                 self.sectionArray[0].records.append(record1)
             }
@@ -57,8 +53,6 @@ class TableViewController: UITableViewController {
     
     
     }
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -66,13 +60,11 @@ class TableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    //Section 개수는 2개(폴더, 음성파일)
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return sectionArray.count
     }
 
-    //셀 개수는
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return sectionArray[section].records.count
@@ -86,8 +78,7 @@ class TableViewController: UITableViewController {
             return cell
         }
         myCell.recordName.text = sectionArray[indexPath.section].records[indexPath.row].fileName
-        
-        
+
         // Configure the cell...
 
         return cell
@@ -96,32 +87,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionArray[section].sectionName
     }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete{
-            sectionArray[0].records.remove(at: indexPath.row)
-            tableView.reloadData()
-        }
-    }
-
     
-    
-<<<<<<< HEAD
-=======
-    
->>>>>>> 6b12ff8e960e639dd6dc338980d368fa6a3106ba
-    //폴더 생성한 것 저장
-    func getFolderDirectory() -> URL
-    {
-        let routes = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let documentDirectory = routes[0]
-        return documentDirectory
-    }
-    
-<<<<<<< HEAD
-
-=======
->>>>>>> 6b12ff8e960e639dd6dc338980d368fa6a3106ba
 
     /*
     // Override to support conditional editing of the table view.
