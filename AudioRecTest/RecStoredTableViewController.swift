@@ -17,6 +17,7 @@ class RecStoredTableViewController: UITableViewController {
         
     @IBOutlet var myTableView: UITableView!
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +32,7 @@ class RecStoredTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
+        myTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,7 +60,7 @@ class RecStoredTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return numberOfRecords
+        return numberOfRecords      //셀의 개수 = 레코드 수
         
     }
     
@@ -73,7 +74,7 @@ class RecStoredTableViewController: UITableViewController {
     {
         let path = getDirectory().appendingPathComponent("\(indexPath.row + 1).m4a")
 
-        do
+        do          //테이블 뷰 셀에 녹음된 파일 입히고 누르면 플레이
         {
             audioPlayer = try AVAudioPlayer(contentsOf: path)
             audioPlayer.play()
@@ -84,11 +85,11 @@ class RecStoredTableViewController: UITableViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)       //값을 전달push
-    {
-        var numOfRecords = numberOfRecords
-    }
-
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?)       //값을 전달push
+//    {
+//        var numOfRecords = numberOfRecords
+//    }
+//
 
     /*
     // Override to support conditional editing of the table view.

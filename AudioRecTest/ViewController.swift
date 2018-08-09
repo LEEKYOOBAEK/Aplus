@@ -14,12 +14,17 @@ var numberOfRecords:Int = 0
 
 class ViewController: UIViewController, AVAudioRecorderDelegate {
     
+    let timeRecordSelector:Selector = #selector(ViewController.updateRecordTime)        //녹음 타이머를 위한 상수
+    
     var recordingSession:AVAudioSession!
     var audioRecorder:AVAudioRecorder!
     var audioPlayer:AVAudioPlayer!
     
+    var progressTimer: Timer!       //타이머를 위한 변수
     
-
+    
+    @IBOutlet weak var currentTimeLabel: UILabel!
+    
     @IBOutlet weak var buttonLabel: UIButton!
     
     @IBAction func record(_ sender: Any)
@@ -27,18 +32,20 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         //Check if we have an active recorder
         if audioRecorder == nil
         {
-            numberOfRecords += 1
+            
             let filename = getDirectory().appendingPathComponent("\(numberOfRecords).m4a")
             
             let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000,AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
             
             //Start audio recording
             do{
+                
                 audioRecorder = try AVAudioRecorder(url: filename, settings: settings)
                 audioRecorder.delegate = self as AVAudioRecorderDelegate    //??
                 audioRecorder.record()  //녹음
                 
                 buttonLabel.setTitle("Stop Recording", for: .normal)        //버튼이름 바뀜
+                progressTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: timeRecordSelector, userInfo: nil, repeats: true)       //녹음시간 타이머
             }
             catch
             {
@@ -47,6 +54,8 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         }else
         {
             audioRecorder.pause()       //녹음 중지
+            
+//            audioRecorder = nil
             
             
             buttonLabel.setTitle("Start Recording", for: .normal)       //버튼이름 바뀜
@@ -57,12 +66,14 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     //Save 버튼 클릭 - 파일 저장 + 이전 화면으로 이동
     @IBAction func recordSaveButton(_ sender: Any)
     {
-//        numberOfRecords += 1
+        numberOfRecords += 1
         print(numberOfRecords)      //녹음 개수 프린트
         
         //stop audio recording
         audioRecorder.stop()        //녹음 멈춤
         audioRecorder = nil         //녹음 종료
+        
+        progressTimer.invalidate()      //녹음 저장하면 타이머 무효화
         
         UserDefaults.standard.set(numberOfRecords, forKey: "myNumber")          //???
         //            myTableView.reloadData()        //새로운 recording을 얻었기 때문
@@ -109,6 +120,20 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         present(alert, animated: true, completion: nil)
     }
     
+    //
+    func convertNSTimeIntervalToString(_ time:TimeInterval) -> String {
+        
+        let min = Int(time/60)
+        let sec = Int(time.truncatingRemainder(dividingBy: 60))
+        let strTime = String(format: "%02d:%02d", min, sec)
+        return strTime
+        
+    }
+    
+    @objc func updateRecordTime() {
+        currentTimeLabel.text = convertNSTimeIntervalToString(audioRecorder.currentTime)
+    }
+   
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
