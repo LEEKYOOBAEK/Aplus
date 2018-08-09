@@ -16,19 +16,29 @@ class TableViewController: UITableViewController {
         var records:[RecordFile]
     }
     
-    var sectionArray:[Section] = [Section(sectionName: "폴더", records: []),Section(sectionName: "음성녹음", records: [])]
+    var sectionArray:[Section] = [Section(sectionName: "폴더", records:[]),Section(sectionName: "음성녹음", records:[])]
+    
+    func saveData() {
+        let filePath = getFilePath(fileName: "recordFiles.dat")
+        NSKeyedArchiver.archiveRootObject(sectionArray[0].records, toFile: filePath)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let record1 = RecordFile(fileName: "한국사", fileSubtitle: nil, fileDate: 0, fileLength: 0)
-//        let record2 = RecordFile(fileName: "음성녹음1", fileSubtitle: nil, fileDate: 0, fileLength: 0)
-//        sectionArray = [Section(sectionName: "폴더", records: [record1]),Section(sectionName: "음성파일", records: [record2])]
+        //파일 저장할 저장소의 경로
+        let filePath = getFilePath(fileName: "recordFiles.dat")
+        
+        if FileManager.default.fileExists(atPath: filePath) {
+            if let records = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [RecordFile] {
+                //파일 저장소에 저장한 파일이 있으면 불러오기
+                self.sectionArray[0].records = records
+            } else{
+                return
+                
+            }
+            
+        }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     @IBAction func addFolder(_ sender: Any) {
@@ -49,7 +59,7 @@ class TableViewController: UITableViewController {
             self.tableView.reloadData()
         }
         alert.addAction(okAction)
-        present(alert, animated: true, completion:nil)
+        present(alert, animated: true, completion:self.saveData)
     
     
     }
