@@ -18,16 +18,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pN-7p-TIc">
+                                <rect key="frame" x="96" y="94" width="183" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujq-cc-0OJ">
-                                <rect key="frame" x="163" y="279" width="48" height="30"/>
+                                <rect key="frame" x="279" y="570" width="86" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="recordSaveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NGr-PY-5fo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSQ-vP-yeK">
+                                <rect key="frame" x="0.0" y="570" width="109" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="recordSaveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZeZ-qI-VBP"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnE-B0-74U">
-                                <rect key="frame" x="50" y="159" width="274" height="41"/>
+                                <rect key="frame" x="50" y="570" width="274" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Start Recording"/>
                                 <connections>
@@ -40,11 +55,12 @@
                     </view>
                     <connections>
                         <outlet property="buttonLabel" destination="RnE-B0-74U" id="iJH-1L-K1g"/>
+                        <outlet property="currentTimeLabel" destination="7pN-7p-TIc" id="qf6-45-rSR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1565.5999999999999" y="116.49175412293854"/>
+            <point key="canvasLocation" x="1494" y="116"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RFY-f9-oPT">
@@ -53,6 +69,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GqX-6V-Eoz">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.082352941176470587" green="0.49411764705882355" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KZr-an-LlV">
                         <rect key="frame" x="0.0" y="623" width="375" height="44"/>
@@ -66,7 +83,7 @@
             </objects>
             <point key="canvasLocation" x="73" y="117"/>
         </scene>
-        <!--Rec Stored Table View Controller-->
+        <!--Title-->
         <scene sceneID="bGI-O3-c7i">
             <objects>
                 <tableViewController id="LEv-X7-Eeg" customClass="RecStoredTableViewController" customModule="AudioRecTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -75,11 +92,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="5df-NR-Ht1">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="57" id="5df-NR-Ht1">
+                                <rect key="frame" x="0.0" y="28" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5df-NR-Ht1" id="7a9-Z4-nZS">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="56.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -98,7 +115,9 @@
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="0sD-IM-UN1"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="6uR-A8-15d"/>
+                    <navigationItem key="navigationItem" title="Title" id="0jC-RA-lKA">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="VDh-o5-1Q3"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="myTableView" destination="ops-Qk-pTc" id="v7j-5F-5ja"/>
@@ -106,7 +125,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PaW-fd-lXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="842" y="118"/>
+<<<<<<< HEAD
+            <point key="canvasLocation" x="782" y="116"/>
+=======
+            <point key="canvasLocation" x="840.79999999999995" y="117.39130434782609"/>
+>>>>>>> 6b12ff8e960e639dd6dc338980d368fa6a3106ba
         </scene>
     </scenes>
 </document>

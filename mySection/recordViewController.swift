@@ -1,28 +1,26 @@
 //
-//  ViewController.swift
-//  AudioRecTest
+//  recordViewController.swift
+//  mySection
 //
-//  Created by CAUAD04 on 2018. 8. 7..
-//  Copyright © 2018년 CAUAD04. All rights reserved.
+//  Created by CAUAD04 on 2018. 8. 9..
+//  Copyright © 2018년 ahnYeLim. All rights reserved.
 //
 
 import UIKit
 import AVFoundation
 
-
 var numberOfRecords:Int = 0
 
-class ViewController: UIViewController, AVAudioRecorderDelegate {
+class recordViewController: UIViewController, AVAudioRecorderDelegate {
     
-    let timeRecordSelector:Selector = #selector(ViewController.updateRecordTime)        //녹음 타이머를 위한 상수
+    let timeRecordSelector:Selector = #selector(recordViewController.updateRecordTime)        //녹음 타이머를 위한 상수
     
     var recordingSession:AVAudioSession!
     var audioRecorder:AVAudioRecorder!
     var audioPlayer:AVAudioPlayer!
     
     var progressTimer: Timer!       //타이머를 위한 변수
-    
-    
+
     @IBOutlet weak var currentTimeLabel: UILabel!
     
     @IBOutlet weak var buttonLabel: UIButton!
@@ -44,7 +42,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
                 audioRecorder.delegate = self as AVAudioRecorderDelegate    //??
                 audioRecorder.record()  //녹음
                 
-                buttonLabel.setTitle("Stop Recording", for: .normal)        //버튼이름 바뀜
+                buttonLabel.setTitle("녹음 정지", for: .normal)        //버튼이름 바뀜
                 progressTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: timeRecordSelector, userInfo: nil, repeats: true)       //녹음시간 타이머
             }
             catch
@@ -55,16 +53,16 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         {
             audioRecorder.pause()       //녹음 중지
             
-//            audioRecorder = nil
+            //            audioRecorder = nil
             
             
-            buttonLabel.setTitle("Start Recording", for: .normal)       //버튼이름 바뀜
+            buttonLabel.setTitle("녹음 시작", for: .normal)       //버튼이름 바뀜
             
         }
     }
     
-    //Save 버튼 클릭 - 파일 저장 + 이전 화면으로 이동
-    @IBAction func recordSaveButton(_ sender: Any)
+       //저장 버튼 클릭 - 파일 저장 + 이전 화면으로 이동
+    @IBAction func save(_ sender: Any)
     {
         numberOfRecords += 1
         print(numberOfRecords)      //녹음 개수 프린트
@@ -83,11 +81,13 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     
-    override func viewDidLoad()
-    {
+    
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-              
+
+        // Do any additional setup after loading the view.
+        
         //settig up session
         recordingSession = AVAudioSession.sharedInstance()
         
@@ -120,7 +120,6 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    //
     func convertNSTimeIntervalToString(_ time:TimeInterval) -> String {
         
         let min = Int(time/60)
@@ -130,18 +129,26 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         
     }
     
-    @objc func updateRecordTime() {
+    @objc func updateRecordTime()
+    {
         currentTimeLabel.text = convertNSTimeIntervalToString(audioRecorder.currentTime)
     }
-   
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//                                                                                                                                                                                                                                                                                                                                                                                                                                     
-//    }
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }

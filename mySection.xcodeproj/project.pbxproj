@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		625023B3211C2243004B9D54 /* recordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625023B2211C2243004B9D54 /* recordViewController.swift */; };
 		D029E9FB211AF22A005419CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029E9FA211AF22A005419CB /* AppDelegate.swift */; };
 		D029EA00211AF22A005419CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D029E9FE211AF22A005419CB /* Main.storyboard */; };
 		D029EA03211AF22A005419CB /* mySection.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D029EA01211AF22A005419CB /* mySection.xcdatamodeld */; };
 		D029EA05211AF22C005419CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D029EA04211AF22C005419CB /* Assets.xcassets */; };
 		D029EA08211AF22C005419CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D029EA06211AF22C005419CB /* LaunchScreen.storyboard */; };
 		D029EA10211AF32C005419CB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029EA0F211AF32C005419CB /* TableViewController.swift */; };
-		D029EA14211AF770005419CB /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029EA13211AF770005419CB /* File.swift */; };
+		D029EA14211AF770005419CB /* RecordFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029EA13211AF770005419CB /* RecordFile.swift */; };
 		D029EA16211AFB25005419CB /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029EA15211AFB25005419CB /* DetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		625023B2211C2243004B9D54 /* recordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordViewController.swift; sourceTree = "<group>"; };
 		D029E9F7211AF22A005419CB /* mySection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mySection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D029E9FA211AF22A005419CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D029E9FF211AF22A005419CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -26,7 +28,7 @@
 		D029EA07211AF22C005419CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D029EA09211AF22C005419CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D029EA0F211AF32C005419CB /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		D029EA13211AF770005419CB /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		D029EA13211AF770005419CB /* RecordFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFile.swift; sourceTree = "<group>"; };
 		D029EA15211AFB25005419CB /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,8 +69,9 @@
 				D029EA09211AF22C005419CB /* Info.plist */,
 				D029EA01211AF22A005419CB /* mySection.xcdatamodeld */,
 				D029EA0F211AF32C005419CB /* TableViewController.swift */,
-				D029EA13211AF770005419CB /* File.swift */,
+				D029EA13211AF770005419CB /* RecordFile.swift */,
 				D029EA15211AFB25005419CB /* DetailTableViewController.swift */,
+				625023B2211C2243004B9D54 /* recordViewController.swift */,
 			);
 			path = mySection;
 			sourceTree = "<group>";
@@ -146,9 +149,10 @@
 			files = (
 				D029EA03211AF22A005419CB /* mySection.xcdatamodeld in Sources */,
 				D029EA16211AFB25005419CB /* DetailTableViewController.swift in Sources */,
-				D029EA14211AF770005419CB /* File.swift in Sources */,
+				D029EA14211AF770005419CB /* RecordFile.swift in Sources */,
 				D029E9FB211AF22A005419CB /* AppDelegate.swift in Sources */,
 				D029EA10211AF32C005419CB /* TableViewController.swift in Sources */,
+				625023B3211C2243004B9D54 /* recordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +297,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 95CRCSRLZ7;
 				INFOPLIST_FILE = mySection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -310,6 +315,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 95CRCSRLZ7;
 				INFOPLIST_FILE = mySection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
