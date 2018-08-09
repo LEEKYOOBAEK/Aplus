@@ -88,6 +88,14 @@ class TableViewController: UITableViewController {
         return sectionArray[section].sectionName
     }
     
+    //파일 삭제하는 코드
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete{
+            sectionArray[0].records.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

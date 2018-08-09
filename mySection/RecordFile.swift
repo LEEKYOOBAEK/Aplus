@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  RecordFile.swift
 //  mySection
 //
 //  Created by CAUAD05 on 2018. 8. 8..
