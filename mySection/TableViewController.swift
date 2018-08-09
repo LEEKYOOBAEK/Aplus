@@ -96,8 +96,20 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionArray[section].sectionName
     }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete{
+            sectionArray[0].records.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
+
     
     
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 6b12ff8e960e639dd6dc338980d368fa6a3106ba
     //폴더 생성한 것 저장
     func getFolderDirectory() -> URL
     {
@@ -106,6 +118,10 @@ class TableViewController: UITableViewController {
         return documentDirectory
     }
     
+<<<<<<< HEAD
+
+=======
+>>>>>>> 6b12ff8e960e639dd6dc338980d368fa6a3106ba
 
     /*
     // Override to support conditional editing of the table view.

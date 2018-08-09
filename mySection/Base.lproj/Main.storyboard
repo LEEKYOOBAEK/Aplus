@@ -7,7 +7,14 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+>>>>>>> 6b12ff8e960e639dd6dc338980d368fa6a3106ba
+=======
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+>>>>>>> 6b12ff8e960e639dd6dc338980d368fa6a3106ba
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,27 +27,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="100" id="R6h-yv-oRr" customClass="MyTableViewCell" customModule="mySection" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="110" id="R6h-yv-oRr" customClass="MyTableViewCell" customModule="mySection" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R6h-yv-oRr" id="R9K-HT-2jh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TD0-vX-76e">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                            <rect key="frame" x="16" y="14" width="207" height="81.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="207" id="BdP-yo-Bkz"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+=======
+=======
+>>>>>>> 6b12ff8e960e639dd6dc338980d368fa6a3106ba
                                             <rect key="frame" x="16" y="21" width="150" height="58"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="150" id="hf5-oP-YMk"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
+>>>>>>> 6b12ff8e960e639dd6dc338980d368fa6a3106ba
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                        <constraint firstItem="TD0-vX-76e" firstAttribute="centerY" secondItem="R9K-HT-2jh" secondAttribute="centerY" id="3kQ-Ue-4hj"/>
+                                        <constraint firstItem="TD0-vX-76e" firstAttribute="top" secondItem="R9K-HT-2jh" secondAttribute="topMargin" constant="3" id="iy4-hg-mh7"/>
+                                        <constraint firstItem="TD0-vX-76e" firstAttribute="leading" secondItem="R9K-HT-2jh" secondAttribute="leadingMargin" id="qTF-wt-FiT"/>
+=======
                                         <constraint firstItem="TD0-vX-76e" firstAttribute="top" secondItem="R9K-HT-2jh" secondAttribute="topMargin" constant="10" id="1jf-Xy-3uw"/>
                                         <constraint firstItem="TD0-vX-76e" firstAttribute="leading" secondItem="R9K-HT-2jh" secondAttribute="leadingMargin" id="OQF-8e-Yqt"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="TD0-vX-76e" secondAttribute="bottom" constant="10" id="bz9-rG-eS1"/>
+>>>>>>> 6b12ff8e960e639dd6dc338980d368fa6a3106ba
+=======
+                                        <constraint firstItem="TD0-vX-76e" firstAttribute="top" secondItem="R9K-HT-2jh" secondAttribute="topMargin" constant="10" id="1jf-Xy-3uw"/>
+                                        <constraint firstItem="TD0-vX-76e" firstAttribute="leading" secondItem="R9K-HT-2jh" secondAttribute="leadingMargin" id="OQF-8e-Yqt"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="TD0-vX-76e" secondAttribute="bottom" constant="10" id="bz9-rG-eS1"/>
+>>>>>>> 6b12ff8e960e639dd6dc338980d368fa6a3106ba
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -73,7 +103,53 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n1E-1o-Ftw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-209" y="34"/>
+            <point key="canvasLocation" x="-210.40000000000001" y="33.733133433283363"/>
+        </scene>
+        <!--Record View Controller-->
+        <scene sceneID="GYe-fv-59L">
+            <objects>
+                <viewController id="zxh-9Y-i4a" customClass="recordViewController" customModule="mySection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Kx-Qc-J28">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9n-Sf-O0y">
+                                <rect key="frame" x="107" y="124" width="160" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDP-wV-zHt">
+                                <rect key="frame" x="102" y="253" width="172" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="녹음 시작"/>
+                                <connections>
+                                    <action selector="record:" destination="zxh-9Y-i4a" eventType="touchUpInside" id="BOm-66-933"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZzS-eb-19v">
+                                <rect key="frame" x="150" y="324" width="74" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="저장"/>
+                                <connections>
+                                    <action selector="save:" destination="zxh-9Y-i4a" eventType="touchUpInside" id="YB4-3R-UoX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="7JH-Ug-nO0"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonLabel" destination="qDP-wV-zHt" id="fVA-PO-dvF"/>
+                        <outlet property="currentTimeLabel" destination="e9n-Sf-O0y" id="3aY-Em-H8K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zPy-x7-Lso" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="536.79999999999995" y="33.733133433283363"/>
         </scene>
         <!--Record View Controller-->
         <scene sceneID="GYe-fv-59L">
