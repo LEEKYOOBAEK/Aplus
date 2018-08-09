@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		625023B3211C2243004B9D54 /* recordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625023B2211C2243004B9D54 /* recordViewController.swift */; };
 		D029E9FB211AF22A005419CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029E9FA211AF22A005419CB /* AppDelegate.swift */; };
 		D029EA00211AF22A005419CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D029E9FE211AF22A005419CB /* Main.storyboard */; };
 		D029EA03211AF22A005419CB /* mySection.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D029EA01211AF22A005419CB /* mySection.xcdatamodeld */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		625023B2211C2243004B9D54 /* recordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordViewController.swift; sourceTree = "<group>"; };
 		D029E9F7211AF22A005419CB /* mySection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mySection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D029E9FA211AF22A005419CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D029E9FF211AF22A005419CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				D029EA0F211AF32C005419CB /* TableViewController.swift */,
 				D029EA13211AF770005419CB /* File.swift */,
 				D029EA15211AFB25005419CB /* DetailTableViewController.swift */,
+				625023B2211C2243004B9D54 /* recordViewController.swift */,
 			);
 			path = mySection;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				D029EA14211AF770005419CB /* File.swift in Sources */,
 				D029E9FB211AF22A005419CB /* AppDelegate.swift in Sources */,
 				D029EA10211AF32C005419CB /* TableViewController.swift in Sources */,
+				625023B3211C2243004B9D54 /* recordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
