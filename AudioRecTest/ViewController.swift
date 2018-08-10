@@ -51,14 +51,21 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
             {
                 displayAlert(title: "Ups!", message: "Recording failed")        //녹음 시 오류가 떴을 경우
             }
-        }else
+        }else           //이어서 녹음
         {
-            audioRecorder.pause()       //녹음 중지
+            if audioRecorder.isRecording == true{
+                do{
+                    audioRecorder.pause()
+                    buttonLabel.setTitle("Start Recording", for: .normal)       //버튼이름 바뀜
+                }
+            }
+            else if audioRecorder.isRecording == false{
+                do{
+                    audioRecorder.record()
+                    buttonLabel.setTitle("Stop Recording", for: .normal)        //버튼이름 바뀜
+                }
             
-//            audioRecorder = nil
-            
-            
-            buttonLabel.setTitle("Start Recording", for: .normal)       //버튼이름 바뀜
+            }
             
         }
     }
