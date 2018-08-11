@@ -21,7 +21,7 @@ class RecStoredTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let number:Int = UserDefaults.standard.object(forKey: "myNumber") as? Int
+        if let number:Int = UserDefaults.standard.object(forKey: "myNumber") as? Int        //viewDidLoad에서 파일 불러와야 처음 들어갔을 떄 파일 뜸
         {
             numberOfRecords = number
         }

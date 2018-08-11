@@ -40,6 +40,8 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
             //Start audio recording
             do{
                 
+                saveButton.isEnabled = true         //녹음 시작버튼 누르면 저장 버튼 활성화
+                
                 audioRecorder = try AVAudioRecorder(url: filename, settings: settings)
                 audioRecorder.delegate = self as AVAudioRecorderDelegate    //??
                 audioRecorder.record()  //녹음
@@ -70,7 +72,10 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
-    //Save 버튼 클릭 - 파일 저장 + 이전 화면으로 이동
+    @IBOutlet weak var saveButton: UIButton!
+    
+    
+    //Save 버튼 클릭 - 파일 저장 + (이전 화면으로 이동) + alert로 저장 or 삭제
     @IBAction func recordSaveButton(_ sender: Any)
     {
         numberOfRecords += 1
@@ -93,7 +98,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
 
         
         
-        self.dismiss(animated: true, completion: nil)       //모달로 연결 했을 때 이전 화면으로 돌아가기
+//        self.dismiss(animated: true, completion: nil)       //모달로 연결 했을 때 이전 화면으로 돌아가기
         
 //        self.navigationController?.popViewController(animated: true)        //show로 연결 했을 때 이전 화면으로 돌아가기
         
@@ -103,6 +108,8 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        saveButton.isEnabled = false        //처음에는 저장 버튼 비활성화 
               
         //settig up session
         recordingSession = AVAudioSession.sharedInstance()
