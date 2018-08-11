@@ -85,10 +85,19 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         UserDefaults.standard.set(numberOfRecords, forKey: "myNumber")          //???
         //            myTableView.reloadData()        //새로운 recording을 얻었기 때문
         
+        let alert = UIAlertController(title: "녹음 파일을 저장할까요?", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("저장", comment: "저장 action"), style: .default, handler: { _ in
+            NSLog("The \"저장\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
+
         
-        self.navigationController?.popViewController(animated: true)        //이전 화면으로 돌아가기
+        
+        self.dismiss(animated: true, completion: nil)       //모달로 연결 했을 때 이전 화면으로 돌아가기
+        
+//        self.navigationController?.popViewController(animated: true)        //show로 연결 했을 때 이전 화면으로 돌아가기
+        
     }
-    
     
     override func viewDidLoad()
     {
