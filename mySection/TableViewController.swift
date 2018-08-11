@@ -56,10 +56,11 @@ class TableViewController: UITableViewController {
                 let record1 = RecordFile(fileName: (alert.textFields?[0].text)!, fileSubtitle: nil, fileDate: 0, fileLength: 0)
                 self.sectionArray[0].records.append(record1)
             }
+            self.saveData()
             self.tableView.reloadData()
         }
         alert.addAction(okAction)
-        present(alert, animated: true, completion:self.saveData)
+        present(alert, animated: true, completion:nil)
     
     
     }
@@ -102,6 +103,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
             sectionArray[0].records.remove(at: indexPath.row)
+            saveData()
             tableView.reloadData()
         }
     }
