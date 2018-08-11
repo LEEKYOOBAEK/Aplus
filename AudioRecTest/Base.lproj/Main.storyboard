@@ -53,6 +53,7 @@
                                 <rect key="frame" x="16" y="143" width="343" height="399"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" red="0.75400744818652843" green="0.75400744818652843" blue="0.75400744818652843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="itb-Hd-OXU">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
@@ -61,6 +62,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.75400744818652843" green="0.75400744818652843" blue="0.75400744818652843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -71,6 +73,7 @@
                     <connections>
                         <outlet property="buttonLabel" destination="RnE-B0-74U" id="iJH-1L-K1g"/>
                         <outlet property="currentTimeLabel" destination="7pN-7p-TIc" id="qf6-45-rSR"/>
+                        <outlet property="saveButton" destination="ujq-cc-0OJ" id="glM-eM-kDR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -125,20 +128,20 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Mz4-Y9-pbg"/>
                         <barButtonItem title="Record" id="MX4-rH-9KX">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="tt5-sz-hME"/>
+                                <action selector="directrecord:" destination="xYZ-sC-NLs" id="qQV-lD-P28"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" id="do1-W4-6f6"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="0sD-IM-UN1"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Title" id="0jC-RA-lKA">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="VDh-o5-1Q3"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="0jC-RA-lKA"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="myTableView" destination="ops-Qk-pTc" id="v7j-5F-5ja"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PaW-fd-lXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="xYZ-sC-NLs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="840.79999999999995" y="117.39130434782609"/>
         </scene>
