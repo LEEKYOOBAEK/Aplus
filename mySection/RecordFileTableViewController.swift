@@ -1,25 +1,39 @@
 //
-//  DetailTableViewController.swift
+//  RecordFileTableViewController.swift
 //  mySection
 //
-//  Created by CAUAD05 on 2018. 8. 8..
+//  Created by CAUAD05 on 2018. 8. 11..
 //  Copyright © 2018년 ahnYeLim. All rights reserved.
 //
 
 import UIKit
+import AVFoundation
 
-class DetailTableViewController: UITableViewController {
+class RecordFileTableViewController: UITableViewController {
     
-    var selectedFile:RecordFile?
+    var audioPlayer:AVAudioPlayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
+        
+        if let fileNumber = UserDefaults.standard.object(forKey: "myRecordFileNumber") as? Int {
+            numberOfRecords = fileNumber
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,26 +45,48 @@ class DetailTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return numberOfRecords
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        cell.textLabel?.text = "음성녹음" + String(indexPath.row + 1)
+        
 
         // Configure the cell...
 
         return cell
     }
-    */
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let path = getFilePath(fileNumber: indexPath.row + 1)
+        do{
+            audioPlayer = try AVAudioPlayer(contentsOf: path)
+            audioPlayer.play()
+        }catch let error as NSError{
+            print("Error-initPlay:\(error)")
+        }
+    }
+    
+    
+    
+    
+    
+    
+    func getFilePath(fileNumber:Int)-> URL {
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = path[0]
+        let filePath = documentDirectory.appendingPathComponent("\(fileNumber).m4a")
+        return filePath
+    }
     /*
-    // Override to support conditional editing of the table view.
+     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
@@ -95,25 +131,3 @@ class DetailTableViewController: UITableViewController {
     */
 
 }
-
-class MyTableViewCell2: UITableViewCell {
-    
-    @IBOutlet weak var recordFileName: UILabel!
-    @IBOutlet weak var recordFileSubtitle: UILabel!
-    @IBOutlet weak var recordFileDate: UILabel!
-    @IBOutlet weak var recordFileLength: UILabel!
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-}
-

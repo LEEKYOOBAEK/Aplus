@@ -21,7 +21,7 @@ class RecordFile:NSObject, NSCoding {
         self.fileDate = fileDate
         self.fileLength = fileLength
     }
-    convenience init(fileName:String, fileSubtitle:String) {
+    convenience init(fileName:String, fileSubtitle:String?) {
         self.init(fileName: fileName, fileSubtitle: fileSubtitle, fileDate: 0, fileLength: 0)
     }
     func encode(with aCoder: NSCoder) {

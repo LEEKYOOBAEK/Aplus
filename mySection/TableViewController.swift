@@ -16,7 +16,12 @@ class TableViewController: UITableViewController {
         var records:[RecordFile]
     }
     
-    var sectionArray:[Section] = [Section(sectionName: "폴더", records:[]),Section(sectionName: "음성녹음", records:[])]
+    var sectionArray:[Section] = [Section(sectionName: "폴더", records:[]),Section(sectionName: "음성녹음", records:[RecordFile(fileName: "음성녹음", fileSubtitle:nil)])]
+//    let recordFile1 = RecordFile(fileName: "음성녹음", fileSubtitle: nil)
+//    sectionArray[0].records.append(recordFile1)
+    
+    
+    
     
     func saveData() {
         let filePath = getFilePath(fileName: "recordFiles.dat")
@@ -78,7 +83,12 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+//        let array = sectionArray[section]
+//        print("array는\(array)")
+//        print("array의 count는\(array.records.count)")
+//        print("retuen값은\(array.records.count)")
         return sectionArray[section].records.count
+        
     }
 
     
@@ -108,6 +118,17 @@ class TableViewController: UITableViewController {
         }
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section != 0 {
+            //do nothing
+        } else if indexPath.section == 0 {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "recordView")
+            self.navigationController?.show(vc, sender: nil)
+        }
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.
