@@ -53,7 +53,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
             {
                 displayAlert(title: "Ups!", message: "Recording failed")        //녹음 시 오류가 떴을 경우
             }
-        }else           //이어서 녹음
+        }else        //녹음기 작동중이면   //이어서 녹음
         {
             if audioRecorder.isRecording == true{
                 do{
@@ -66,7 +66,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
                     audioRecorder.record()
                     buttonLabel.setTitle("Stop Recording", for: .normal)        //버튼이름 바뀜
                 }
-            
+                
             }
             
         }
@@ -81,24 +81,68 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         numberOfRecords += 1
         print(numberOfRecords)      //녹음 개수 프린트
         
-        //stop audio recording
-        audioRecorder.stop()        //녹음 멈춤
-        audioRecorder = nil         //녹음 종료
+//        //stop audio recording
+//        audioRecorder.stop()        //녹음 멈춤
+//        audioRecorder = nil         //녹음 종료
+//
+//        progressTimer.invalidate()      //녹음 저장하면 타이머 무효화
+//
+//        UserDefaults.standard.set(numberOfRecords, forKey: "myNumber")          //???
+//        //            myTableView.reloadData()        //새로운 recording을 얻었기 때문
+//
         
-        progressTimer.invalidate()      //녹음 저장하면 타이머 무효화
+        //alert로 저장 or 삭제
+        let alert = UIAlertController(title: "녹음 파일을 저장할까요?", message: "", preferredStyle: .alert)          //alert 형식으로 나타나도록 + 메시지
         
-        UserDefaults.standard.set(numberOfRecords, forKey: "myNumber")          //???
-        //            myTableView.reloadData()        //새로운 recording을 얻었기 때문
+//        alert.addAction(UIAlertAction(title: NSLocalizedString("저장", comment: "저장 action"), style: .default, handler: { _ in
+//            NSLog("The \"저장\" alert occured.")
+//        }))
         
-        let alert = UIAlertController(title: "녹음 파일을 저장할까요?", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("저장", comment: "저장 action"), style: .default, handler: { _ in
-            NSLog("The \"저장\" alert occured.")
-        }))
-        self.present(alert, animated: true, completion: nil)
+        //alert텍스트
+        alert.addTextField { (textField) in textField.placeholder = "음성녹음 이름"
+        }
+        
+        //alert에서 '저장' 클릭하면 저장 후 파일 목록화면으로
+        let saveAction = UIAlertAction(title: "저장", style:.default)
+        { (action) in
+           
+            //stop audio recording
+            self.audioRecorder.stop()        //녹음 멈춤
+            self.audioRecorder = nil         //녹음 종료
+            
+            self.progressTimer.invalidate()      //녹음 저장하면 타이머 무효화
+            
+            UserDefaults.standard.set(numberOfRecords, forKey: "myNumber")          //???
+            //            myTableView.reloadData()        //새로운 recording을 얻었기 때문
+            self.dismiss(animated: true, completion: nil)       //모달로 연결 했을 때 이전 화면으로 돌아가기
+        }
+        
+//        let alert2 = UIAlertController(title: "녹음 삭제", message: "\(alert.textFields?[0].text)을(를) 삭제 하겠습니까?", preferredStyle: .alert)
+        
+        
+        //alert에서 '삭제' 클릭하면 파일 삭제
+        let deleteAction = UIAlertAction(title: "삭제", style: .default)
+        { (action) in
+            //삭제 다시 물어보는 alert로
+            let alert2 = UIAlertController(title: "녹음 삭제", message: "\(String(describing: alert.textFields![0].text))을(를) 삭제 하겠습니까?", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "취소", style: .default)  //창닫기
+            let realdelAction = UIAlertAction(title: "삭제", style: .default) //파일 삭제코딩 추가 필요
+            
+            alert2.addAction(cancelAction)
+            alert2.addAction(realdelAction)
+            self.present(alert2, animated: true, completion: nil)
+            
+//            let alert2 = UIAlertController(title: "녹음 삭제", message: "\(self.alert.TextField?[0].text)을(를) 삭제 하겠습니까?", preferredStyle: .alert)
+        }
+        
+        alert.addAction(saveAction)     //'저장'액션 추가
+        alert.addAction(deleteAction)   //'삭제'액션 추가
+        self.present(alert, animated: true, completion: nil)    //alert 나타나도록
+        
+        self.audioRecorder.pause()      //'삭제'누르면 녹음 중지
+        self.buttonLabel.setTitle("Start Recording", for: .normal)   //버튼이름 바뀜
 
-        
-        
-//        self.dismiss(animated: true, completion: nil)       //모달로 연결 했을 때 이전 화면으로 돌아가기
         
 //        self.navigationController?.popViewController(animated: true)        //show로 연결 했을 때 이전 화면으로 돌아가기
         
@@ -109,7 +153,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        saveButton.isEnabled = false        //처음에는 저장 버튼 비활성화 
+        saveButton.isEnabled = false        //처음에는 저장 버튼 비활성화
               
         //settig up session
         recordingSession = AVAudioSession.sharedInstance()
