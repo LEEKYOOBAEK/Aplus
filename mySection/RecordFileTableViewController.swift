@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AVFoundation
+//import AVFoundation
 
 class RecordFileTableViewController: UITableViewController {
     
@@ -64,24 +64,24 @@ class RecordFileTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "recordPlayer")
-        self.navigationController?.show(vc, sender: nil)
-        let nextViewController = vc as? RecordPlayViewController
-        nextViewController?.selectedFilePath = getFilePath(fileNumber: indexPath.row + 1)
-        
-        
-        
-    }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let nextViewController = segue.destination as? RecordPlayViewController
-//        let selectedIndexPath = self.tableView.indexPathForSelectedRow
-//        if let indexPath = selectedIndexPath {
-//            nextViewController?.selectedFilePath = getFilePath(fileNumber: indexPath.row + 1)
-//        }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "recordPlayer")
+//        self.navigationController?.show(vc, sender: nil)
+//        let nextViewController = vc as? RecordPlayViewController
+//        nextViewController?.selectedFilePath = getFilePath(fileNumber: indexPath.row + 1)
+//
+//
+//
 //    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextViewController = segue.destination as? RecordPlayViewController
+        let selectedIndexPath = self.tableView.indexPathForSelectedRow
+        if let indexPath = selectedIndexPath {
+            nextViewController?.selectedFilePath = getFilePath(fileNumber: indexPath.row + 1)
+        }
+    }
     
     
     

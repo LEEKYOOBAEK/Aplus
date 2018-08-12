@@ -9,7 +9,9 @@
 import UIKit
 
 
+
 class TableViewController: UITableViewController {
+    
     
     struct Section {
         var sectionName:String
@@ -121,7 +123,11 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section != 0 {
-            //do nothing
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "recordPlayer")
+            self.navigationController?.show(vc, sender: nil)
+            
+            
         } else if indexPath.section == 0 {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "recordView")
@@ -129,6 +135,21 @@ class TableViewController: UITableViewController {
         }
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let nextViewController = segue.destination as? RecordPlayViewController
+//        let selectedIndexPath = self.tableView.indexPathForSelectedRow
+//        if let indexPath = selectedIndexPath {
+//            nextViewController?.selectedFilePath = getFilePath(fileNumber: )
+//        }
+    }
+    
+//    func getFilePath(fileNumber:Int)-> URL {
+//        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+//        let documentDirectory = path[0]
+//        let filePath = documentDirectory.appendingPathComponent("\(fileNumber).m4a")
+//        return filePath
+//    }
 
     /*
     // Override to support conditional editing of the table view.

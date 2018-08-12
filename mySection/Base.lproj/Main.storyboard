@@ -55,7 +55,11 @@
                             <outlet property="delegate" destination="T6L-0w-aTQ" id="UeF-NJ-Aer"/>
                         </connections>
                     </tableView>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="XvI-zC-1bw"/>
+                        <barButtonItem title="녹음" id="WeM-hu-BGJ"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Iw8-97-inH"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="cGm-6b-w4V">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="Bm6-ML-jhA">
                             <connections>
@@ -68,6 +72,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n1E-1o-Ftw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-210.40000000000001" y="33.733133433283363"/>
+        </scene>
+        <!--Recorder View Controller2-->
+        <scene sceneID="xnc-1F-QEA">
+            <objects>
+                <viewController id="8RE-DT-KE4" customClass="RecorderViewController2" customModule="mySection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="huY-4U-ATK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGn-Mi-tX9">
+                                <rect key="frame" x="101" y="75" width="173" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAu-4b-2M6">
+                                <rect key="frame" x="136" y="355" width="102" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="start recording"/>
+                                <connections>
+                                    <action selector="record:" destination="8RE-DT-KE4" eventType="touchUpInside" id="6Vd-WS-viA"/>
+                                    <action selector="record:" destination="YzG-nx-hBF" eventType="touchUpInside" id="MOw-PO-0U6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lwL-7c-8Av">
+                                <rect key="frame" x="291" y="355" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="save:" destination="8RE-DT-KE4" eventType="touchUpInside" id="5ce-E1-tRN"/>
+                                    <action selector="save:" destination="YzG-nx-hBF" eventType="touchUpInside" id="T6l-Ca-et5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="PqT-R3-Qkj"/>
+                    </view>
+                    <connections>
+                        <outlet property="currentTime" destination="nGn-Mi-tX9" id="tXm-cz-EUc"/>
+                        <outlet property="startBtn" destination="cAu-4b-2M6" id="h40-z6-i5b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OHY-lA-mFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-210" y="760"/>
         </scene>
         <!--Record File Table View Controller-->
         <scene sceneID="vsE-H2-I1f">
@@ -85,6 +135,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="SRf-7G-Uzk" kind="show" id="GnI-fK-zfM"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -105,7 +158,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k7h-gK-YSF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="517" y="38"/>
+            <point key="canvasLocation" x="505" y="-374"/>
         </scene>
         <!--Recorder View Controller-->
         <scene sceneID="26Y-Hh-ohc">
@@ -149,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qeT-bX-76P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1294" y="-373"/>
+            <point key="canvasLocation" x="1284" y="-530"/>
         </scene>
         <!--Record Play View Controller-->
         <scene sceneID="LD9-Ib-qdB">
@@ -158,13 +211,22 @@
                     <view key="view" contentMode="scaleToFill" id="zZc-4I-cdk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEK-tH-cPe">
+                                <rect key="frame" x="101" y="93" width="173" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="yl4-U6-bL7"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgz-Vs-yqt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1294" y="439"/>
+            <point key="canvasLocation" x="1284" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pF0-fA-nhu">
