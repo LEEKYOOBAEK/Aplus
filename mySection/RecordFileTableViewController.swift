@@ -11,7 +11,7 @@ import AVFoundation
 
 class RecordFileTableViewController: UITableViewController {
     
-    var audioPlayer:AVAudioPlayer!
+//    var audioPlayer:AVAudioPlayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,15 +65,23 @@ class RecordFileTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let path = getFilePath(fileNumber: indexPath.row + 1)
-        do{
-            audioPlayer = try AVAudioPlayer(contentsOf: path)
-            audioPlayer.play()
-        }catch let error as NSError{
-            print("Error-initPlay:\(error)")
-        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "recordPlayer")
+        self.navigationController?.show(vc, sender: nil)
+        let nextViewController = vc as? RecordPlayViewController
+        nextViewController?.selectedFilePath = getFilePath(fileNumber: indexPath.row + 1)
+        
+        
+        
     }
     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let nextViewController = segue.destination as? RecordPlayViewController
+//        let selectedIndexPath = self.tableView.indexPathForSelectedRow
+//        if let indexPath = selectedIndexPath {
+//            nextViewController?.selectedFilePath = getFilePath(fileNumber: indexPath.row + 1)
+//        }
+//    }
     
     
     

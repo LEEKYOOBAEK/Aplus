@@ -149,7 +149,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qeT-bX-76P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1277.5999999999999" y="36.431784107946029"/>
+            <point key="canvasLocation" x="1294" y="-373"/>
+        </scene>
+        <!--Record Play View Controller-->
+        <scene sceneID="LD9-Ib-qdB">
+            <objects>
+                <viewController storyboardIdentifier="recordPlayer" id="SRf-7G-Uzk" customClass="RecordPlayViewController" customModule="mySection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zZc-4I-cdk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="yl4-U6-bL7"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tgz-Vs-yqt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1294" y="439"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pF0-fA-nhu">

@@ -14,6 +14,7 @@
 		D029EA08211AF22C005419CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D029EA06211AF22C005419CB /* LaunchScreen.storyboard */; };
 		D029EA10211AF32C005419CB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029EA0F211AF32C005419CB /* TableViewController.swift */; };
 		D029EA14211AF770005419CB /* RecordFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029EA13211AF770005419CB /* RecordFile.swift */; };
+		D0A91503212060E90050D3AF /* RecordPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A91502212060E90050D3AF /* RecordPlayViewController.swift */; };
 		D0C4C83D211EF983000DBDE4 /* RecordFileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4C83C211EF983000DBDE4 /* RecordFileTableViewController.swift */; };
 		D0C4C83F211F1A88000DBDE4 /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4C83E211F1A88000DBDE4 /* RecorderViewController.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		D029EA09211AF22C005419CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D029EA0F211AF32C005419CB /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		D029EA13211AF770005419CB /* RecordFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFile.swift; sourceTree = "<group>"; };
+		D0A91502212060E90050D3AF /* RecordPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPlayViewController.swift; sourceTree = "<group>"; };
 		D0C4C83C211EF983000DBDE4 /* RecordFileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFileTableViewController.swift; sourceTree = "<group>"; };
 		D0C4C83E211F1A88000DBDE4 /* RecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +74,7 @@
 				D029EA13211AF770005419CB /* RecordFile.swift */,
 				D0C4C83C211EF983000DBDE4 /* RecordFileTableViewController.swift */,
 				D0C4C83E211F1A88000DBDE4 /* RecorderViewController.swift */,
+				D0A91502212060E90050D3AF /* RecordPlayViewController.swift */,
 			);
 			path = mySection;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 				D029EA03211AF22A005419CB /* mySection.xcdatamodeld in Sources */,
 				D029EA14211AF770005419CB /* RecordFile.swift in Sources */,
 				D029E9FB211AF22A005419CB /* AppDelegate.swift in Sources */,
+				D0A91503212060E90050D3AF /* RecordPlayViewController.swift in Sources */,
 				D029EA10211AF32C005419CB /* TableViewController.swift in Sources */,
 				D0C4C83F211F1A88000DBDE4 /* RecorderViewController.swift in Sources */,
 				D0C4C83D211EF983000DBDE4 /* RecordFileTableViewController.swift in Sources */,
