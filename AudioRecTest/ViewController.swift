@@ -58,12 +58,16 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
             if audioRecorder.isRecording == true{
                 do{
                     audioRecorder.pause()
+                    recordPlayButton.isEnabled = true       //플레이버튼 활성화
+                    
                     buttonLabel.setTitle("Start Recording", for: .normal)       //버튼이름 바뀜
                 }
             }
             else if audioRecorder.isRecording == false{
                 do{
                     audioRecorder.record()
+                    recordPlayButton.isEnabled = false      //플레이버튼 비활성화
+                    
                     buttonLabel.setTitle("Stop Recording", for: .normal)        //버튼이름 바뀜
                 }
                 
@@ -148,12 +152,21 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         
     }
     
+    
+    @IBOutlet weak var recordPlayButton: UIButton!
+    
+    @IBAction func replay(_ sender: Any) {
+        
+        
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         saveButton.isEnabled = false        //처음에는 저장 버튼 비활성화
+        recordPlayButton.isEnabled = false      //처음에는 플레이 버튼 비활성화
               
         //settig up session
         recordingSession = AVAudioSession.sharedInstance()

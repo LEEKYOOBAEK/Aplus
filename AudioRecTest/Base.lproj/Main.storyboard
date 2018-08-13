@@ -38,7 +38,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Play"/>
                                 <connections>
-                                    <action selector="recordSaveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZeZ-qI-VBP"/>
+                                    <action selector="replay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6qv-SQ-Nin"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnE-B0-74U">
@@ -73,6 +73,7 @@
                     <connections>
                         <outlet property="buttonLabel" destination="RnE-B0-74U" id="iJH-1L-K1g"/>
                         <outlet property="currentTimeLabel" destination="7pN-7p-TIc" id="qf6-45-rSR"/>
+                        <outlet property="recordPlayButton" destination="BSQ-vP-yeK" id="FgT-Au-Omq"/>
                         <outlet property="saveButton" destination="ujq-cc-0OJ" id="glM-eM-kDR"/>
                     </connections>
                 </viewController>
@@ -136,9 +137,6 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Title" id="0jC-RA-lKA"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="myTableView" destination="ops-Qk-pTc" id="v7j-5F-5ja"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PaW-fd-lXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="xYZ-sC-NLs" userLabel="Exit" sceneMemberID="exit"/>

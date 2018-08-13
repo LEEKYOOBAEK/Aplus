@@ -15,8 +15,7 @@ class RecStoredTableViewController: UITableViewController {
     var audioPlayer:AVAudioPlayer!
     
         
-    @IBOutlet var myTableView: UITableView!
-    
+   
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,7 @@ class RecStoredTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        myTableView.reloadData()
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
