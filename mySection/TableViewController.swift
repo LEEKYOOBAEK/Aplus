@@ -14,8 +14,9 @@ class TableViewController: UITableViewController {
     
     var folderSection:[String] = []
     var recordFileSection:[RecordFile] = []
-    var numberOfRecordsInHome:Int = 0
+    
     var folderCount:Int = 0
+    let basicFolder = createFolder(fileName: "BasicFolder")
     
     
    
@@ -29,6 +30,8 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.reloadData()
+        
        
        if let newFolder = UserDefaults.standard.object(forKey: "myFolder") as? [String] {
             self.folderSection = newFolder
@@ -36,6 +39,8 @@ class TableViewController: UITableViewController {
         
         self.folderCount = UserDefaults.standard.integer(forKey: "forderNumber")
         print("폴더 수는 \(folderCount)")
+        
+        
 
     }
 
@@ -82,7 +87,15 @@ class TableViewController: UITableViewController {
             return folderSection.count
             
         }else {
-            return numberOfRecordsInHome
+            do{
+                let dirContent = try FileManager.default.contentsOfDirectory(at:basicFolder, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+                let count = dirContent.count
+                return count
+            }catch {
+                print("Error")
+                return 0
+                
+            }
         }
 
     }
@@ -96,7 +109,7 @@ class TableViewController: UITableViewController {
         }
         if indexPath.section == 0 {
             myCell.recordName.text = folderSection[indexPath.row]
-        }else if indexPath.section != 0 {
+        }else {
             myCell.recordName.text = "음성녹음\(indexPath.row + 1)"
         }
 
@@ -129,15 +142,31 @@ class TableViewController: UITableViewController {
         }
     }
     
+    @IBAction func moveRecorder(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "recorder") as? RecorderViewController {
+            vc.selectedFilePath = basicFolder
+            present(vc, animated: true, completion: nil)
+            
+    }
+    }
     
+
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section != 0 {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "recordPlayer")
-            self.navigationController?.show(vc, sender: nil)
-            
+            if let vc = storyboard.instantiateViewController(withIdentifier: "recordPlayer") as? RecordPlayViewController{
+                do {
+                    let dirContent = try FileManager.default.contentsOfDirectory(at: basicFolder, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+                    let filePath = dirContent[indexPath.row]
+                    vc.willPlayFilePath = filePath
+            }catch{
+                return
+            }
+                self.navigationController?.show(vc, sender: nil)
+            }
             
 //            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "")as? GreenViewController {
 //                vc.labelStr = ""
@@ -157,13 +186,13 @@ class TableViewController: UITableViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        let nextViewController = segue.destination as? RecordPlayViewController
 //        let selectedIndexPath = self.tableView.indexPathForSelectedRow
 //        if let indexPath = selectedIndexPath {
 //            nextViewController?.selectedFilePath = getFilePath(fileNumber: )
 //        }
-    }
+//    }
     
 //    func getFilePath(fileNumber:Int)-> URL {
 //        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

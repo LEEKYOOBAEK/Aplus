@@ -57,7 +57,11 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="XvI-zC-1bw"/>
-                        <barButtonItem title="녹음" id="WeM-hu-BGJ"/>
+                        <barButtonItem title="녹음" id="WeM-hu-BGJ">
+                            <connections>
+                                <action selector="moveRecorder:" destination="T6L-0w-aTQ" id="dwi-Ox-iRr"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Iw8-97-inH"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="cGm-6b-w4V">
