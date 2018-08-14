@@ -167,7 +167,8 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         
         saveButton.isEnabled = false        //처음에는 저장 버튼 비활성화
         recordPlayButton.isEnabled = false      //처음에는 플레이 버튼 비활성화
-              
+        
+        record((Any).self)
         //settig up session
         recordingSession = AVAudioSession.sharedInstance()
         
