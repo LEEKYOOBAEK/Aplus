@@ -8,9 +8,12 @@
 
 import UIKit
 import AVFoundation
+import Foundation
 
 
 var numberOfRecords:Int = 0
+
+var titles:[String]?
 
 class ViewController: UIViewController, AVAudioRecorderDelegate {
     
@@ -21,6 +24,10 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     var audioPlayer:AVAudioPlayer!
     
     var progressTimer: Timer!       //타이머를 위한 변수
+    
+    var delegate:RecStoredTableViewController?
+    
+    
     
     
     @IBOutlet weak var currentTimeLabel: UILabel!
@@ -60,7 +67,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
                     audioRecorder.pause()
                     recordPlayButton.isEnabled = true       //플레이버튼 활성화
                     
-//                    let route = FileManager.default.urls(for: .t, in: <#T##FileManager.SearchPathDomainMask#>)
+                    let tmp = FileManager.default.temporaryDirectory
                     
                     buttonLabel.setTitle("Start Recording", for: .normal)       //버튼이름 바뀜
                 }
@@ -95,7 +102,9 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
 //        }))
         
         //alert텍스트
-        alert.addTextField { (textField) in textField.placeholder = "음성녹음 이름"
+        alert.addTextField { (textField) in
+            textField.placeholder = "음성녹음 이름"
+                       
         }
         
         //alert에서 '저장' 클릭하면 저장 후 파일 목록화면으로
@@ -107,6 +116,14 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
             self.audioRecorder = nil         //녹음 종료
             
             self.progressTimer.invalidate()      //녹음 저장하면 타이머 무효화
+            
+            if alert.textFields?[0].text == "" {
+                let title1 = "음성녹음\(numberOfRecords)"
+                titles?.append(title1)
+            }else{
+                let title1 = alert.textFields?[0].text
+                titles?.append(title1!)
+            }
             
             //이름도 저장
             
@@ -125,10 +142,13 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
             let alert2 = UIAlertController(title: "녹음 삭제", message: "\(String(describing: alert.textFields![0].text))을(를) 삭제 하겠습니까?", preferredStyle: .alert)
             
             let cancelAction = UIAlertAction(title: "취소", style: .default)  //창닫기
-            let realdelAction = UIAlertAction(title: "삭제", style: .default) //파일 삭제코딩 추가 필요
+            let realdelAction = UIAlertAction(title: "삭제", style: .default)
             { (action) in
                 self.audioRecorder.stop()
-                self.audioRecorder.deleteRecording()
+                self.audioRecorder.deleteRecording()        //파일 삭제코딩
+                
+                
+                
                
                 self.dismiss(animated: true, completion: nil)
 

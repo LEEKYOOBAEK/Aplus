@@ -74,7 +74,11 @@ class RecStoredTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "음성녹음" + String(indexPath.row + 1)        //녹음후 녹음파일 이름(첫번째 인덱스가 0이기 때문에 +1 해준다)
+//        cell.textLabel?.text = "음성녹음" + String(indexPath.row + 1)        //녹음후 녹음파일 이름(첫번째 인덱스가 0이기 때문에 +1 해준다)
+        guard let myCell = cell  else{
+            return cell
+        }
+       myCell.text = titles
         return cell
     }
 
@@ -99,8 +103,15 @@ class RecStoredTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)       //값을 전달push
     {
         var numOfRecords = numberOfRecords
-//        tableView.beginUpdates()
-//        tableView
+        
+        if let vc = segue.destination as? ViewController {
+            var selectedIndexPath = tableView.indexPathForSelectedRow
+            if let indexPath = selectedIndexPath{
+                vc.delegate = self
+            }
+        }
+        
+
     }
 //
 
