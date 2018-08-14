@@ -14,11 +14,17 @@ class RecStoredTableViewController: UITableViewController {
     
     var audioPlayer:AVAudioPlayer!
     
+  
+    
         
    
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        tableView.beginUpdates()
+//         tableView.deleteRows(at: IndexPath., with: <#T##UITableViewRowAnimation#>)
+//        tableView.endUpdates()
         
         if let number:Int = UserDefaults.standard.object(forKey: "myNumber") as? Int        //viewDidLoad에서 파일 불러와야 처음 들어갔을 떄 파일 뜸
         {
@@ -68,7 +74,11 @@ class RecStoredTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "음성녹음" + String(indexPath.row + 1)        //녹음후 녹음파일 이름(첫번째 인덱스가 0이기 때문에 +1 해준다)
+//        cell.textLabel?.text = "음성녹음" + String(indexPath.row + 1)        //녹음후 녹음파일 이름(첫번째 인덱스가 0이기 때문에 +1 해준다)
+        guard let myCell = cell  else{
+            return cell
+        }
+       myCell.text = titles
         return cell
     }
 
@@ -85,12 +95,24 @@ class RecStoredTableViewController: UITableViewController {
         {
 
         }
+        
     }
+     
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?)       //값을 전달push
-//    {
-//        var numOfRecords = numberOfRecords
-//    }
+   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)       //값을 전달push
+    {
+        var numOfRecords = numberOfRecords
+        
+        if let vc = segue.destination as? ViewController {
+            var selectedIndexPath = tableView.indexPathForSelectedRow
+            if let indexPath = selectedIndexPath{
+                vc.delegate = self
+            }
+        }
+        
+
+    }
 //
 
     /*

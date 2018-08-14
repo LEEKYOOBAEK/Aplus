@@ -8,9 +8,12 @@
 
 import UIKit
 import AVFoundation
+import Foundation
 
 
 var numberOfRecords:Int = 0
+
+var titles:[String]?
 
 class ViewController: UIViewController, AVAudioRecorderDelegate {
     
@@ -22,6 +25,10 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     
     var progressTimer: Timer!       //타이머를 위한 변수
     
+    var delegate:RecStoredTableViewController?
+    
+    
+    
     
     @IBOutlet weak var currentTimeLabel: UILabel!
     
@@ -32,8 +39,8 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         //Check if we have an active recorder
         if audioRecorder == nil
         {
-            
-            let filename = getDirectory().appendingPathComponent("\(numberOfRecords).m4a")
+            numberOfRecords += 1
+            let filename = getDirectory().appendingPathComponent("\(numberOfRecords).m4a")      //파일이 저장되는 url + 파일이름
             
             let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000,AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
             
@@ -43,7 +50,7 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
                 saveButton.isEnabled = true         //녹음 시작버튼 누르면 저장 버튼 활성화
                 
                 audioRecorder = try AVAudioRecorder(url: filename, settings: settings)
-                audioRecorder.delegate = self as AVAudioRecorderDelegate    //??
+                audioRecorder.delegate = self     //??
                 audioRecorder.record()  //녹음
                 
                 buttonLabel.setTitle("Stop Recording", for: .normal)        //버튼이름 바뀜
@@ -59,6 +66,8 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
                 do{
                     audioRecorder.pause()
                     recordPlayButton.isEnabled = true       //플레이버튼 활성화
+                    
+                    let tmp = FileManager.default.temporaryDirectory
                     
                     buttonLabel.setTitle("Start Recording", for: .normal)       //버튼이름 바뀜
                 }
@@ -82,19 +91,9 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     //Save 버튼 클릭 - 파일 저장 + (이전 화면으로 이동) + alert로 저장 or 삭제
     @IBAction func recordSaveButton(_ sender: Any)
     {
-        numberOfRecords += 1
+        
         print(numberOfRecords)      //녹음 개수 프린트
-        
-//        //stop audio recording
-//        audioRecorder.stop()        //녹음 멈춤
-//        audioRecorder = nil         //녹음 종료
-//
-//        progressTimer.invalidate()      //녹음 저장하면 타이머 무효화
-//
-//        UserDefaults.standard.set(numberOfRecords, forKey: "myNumber")          //???
-//        //            myTableView.reloadData()        //새로운 recording을 얻었기 때문
-//
-        
+
         //alert로 저장 or 삭제
         let alert = UIAlertController(title: "녹음 파일을 저장할까요?", message: "", preferredStyle: .alert)          //alert 형식으로 나타나도록 + 메시지
         
@@ -103,7 +102,9 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
 //        }))
         
         //alert텍스트
-        alert.addTextField { (textField) in textField.placeholder = "음성녹음 이름"
+        alert.addTextField { (textField) in
+            textField.placeholder = "음성녹음 이름"
+                       
         }
         
         //alert에서 '저장' 클릭하면 저장 후 파일 목록화면으로
@@ -116,8 +117,18 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
             
             self.progressTimer.invalidate()      //녹음 저장하면 타이머 무효화
             
-            UserDefaults.standard.set(numberOfRecords, forKey: "myNumber")          //???
-            //            myTableView.reloadData()        //새로운 recording을 얻었기 때문
+            if alert.textFields?[0].text == "" {
+                let title1 = "음성녹음\(numberOfRecords)"
+                titles?.append(title1)
+            }else{
+                let title1 = alert.textFields?[0].text
+                titles?.append(title1!)
+            }
+            
+            //이름도 저장
+            
+            UserDefaults.standard.set(numberOfRecords, forKey: "myNumber")
+             //새로운 recording을 얻었기 때문
             self.dismiss(animated: true, completion: nil)       //모달로 연결 했을 때 이전 화면으로 돌아가기
         }
         
@@ -131,8 +142,18 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
             let alert2 = UIAlertController(title: "녹음 삭제", message: "\(String(describing: alert.textFields![0].text))을(를) 삭제 하겠습니까?", preferredStyle: .alert)
             
             let cancelAction = UIAlertAction(title: "취소", style: .default)  //창닫기
-            let realdelAction = UIAlertAction(title: "삭제", style: .default) //파일 삭제코딩 추가 필요
-            
+            let realdelAction = UIAlertAction(title: "삭제", style: .default)
+            { (action) in
+                self.audioRecorder.stop()
+                self.audioRecorder.deleteRecording()        //파일 삭제코딩
+                
+                
+                
+               
+                self.dismiss(animated: true, completion: nil)
+
+                
+            }
             alert2.addAction(cancelAction)
             alert2.addAction(realdelAction)
             self.present(alert2, animated: true, completion: nil)
@@ -157,7 +178,6 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func replay(_ sender: Any) {
         
-        
     }
     
     override func viewDidLoad()
@@ -168,7 +188,6 @@ class ViewController: UIViewController, AVAudioRecorderDelegate {
         saveButton.isEnabled = false        //처음에는 저장 버튼 비활성화
         recordPlayButton.isEnabled = false      //처음에는 플레이 버튼 비활성화
         
-        record((Any).self)
         //settig up session
         recordingSession = AVAudioSession.sharedInstance()
         
