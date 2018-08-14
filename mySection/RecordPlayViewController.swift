@@ -10,14 +10,14 @@ import UIKit
 import AVFoundation
 
 class RecordPlayViewController: UIViewController {
-    var selectedFilePath:URL?
+    var willPlayFilePath:URL?
     var audioPlayer:AVAudioPlayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         do{
-            audioPlayer = try AVAudioPlayer(contentsOf: selectedFilePath!)
+            audioPlayer = try AVAudioPlayer(contentsOf: (willPlayFilePath)!)
             audioPlayer.play()
         } catch let error as NSError{
             print("Error-initPlay:\(error)")

@@ -48,12 +48,30 @@ class RecordFile:NSObject, NSCoding {
     }
 }
 
-func getFilePath(fileName:String)->String {
-    let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-    let docDir = dirPath[0] as NSString
+
+
+func createFolder(fileName:String)->URL{
+    let dirPaths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    let filePath = dirPaths[0]
+    let myFilePath = filePath.appendingPathComponent(fileName).path
+    do{
+        try FileManager.default.createDirectory(atPath: myFilePath, withIntermediateDirectories: true, attributes: nil)
+    }catch {
+        print("Error:\(error.localizedDescription)")
+    }
+    let newURL = URL(string:myFilePath)
+    return newURL!
     
-    let filePath = docDir.appendingPathComponent(fileName)
-    return filePath
+}
+
+
+
+
+
+func getFilePath()-> URL {
+    let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    let documentDirectory = path[0]
+    return documentDirectory
 }
 
 

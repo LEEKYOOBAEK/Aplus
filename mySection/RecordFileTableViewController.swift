@@ -7,11 +7,14 @@
 //
 
 import UIKit
-//import AVFoundation
+
 
 class RecordFileTableViewController: UITableViewController {
     
-//    var audioPlayer:AVAudioPlayer!
+    var selectedFilePath:URL!
+    var selectedFolderName:String!
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,13 +53,23 @@ class RecordFileTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return numberOfRecords
+        do{
+            let dirContent = try FileManager.default.contentsOfDirectory(at: selectedFilePath, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+            let count = dirContent.count
+            return count
+        }catch {
+            print("Error")
+            return 0
+
+        }
+       
+        
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.text = "음성녹음" + String(indexPath.row + 1)
+        cell.textLabel?.text = selectedFolderName + "." + String(indexPath.row + 1)
         
 
         // Configure the cell...
@@ -65,25 +78,36 @@ class RecordFileTableViewController: UITableViewController {
     }
     
 //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "recordPlayer")
-//        self.navigationController?.show(vc, sender: nil)
-//        let nextViewController = vc as? RecordPlayViewController
-//        nextViewController?.selectedFilePath = getFilePath(fileNumber: indexPath.row + 1)
+//
+//
 //
 //
 //
 //    }
-    
+//
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nextViewController = segue.destination as? RecordPlayViewController
         let selectedIndexPath = self.tableView.indexPathForSelectedRow
         if let indexPath = selectedIndexPath {
-            nextViewController?.selectedFilePath = getFilePath(fileNumber: indexPath.row + 1)
+            do{
+                let dirContent = try FileManager.default.contentsOfDirectory(at: selectedFilePath, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+                let filePath = dirContent[indexPath.row]
+                nextViewController?.willPlayFilePath = filePath
+            }catch {
+                return
+            }
+            
         }
     }
+
     
-    
+    @IBAction func moveRecorder(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "recorder") as? RecorderViewController {
+            vc.selectedFilePath = self.selectedFilePath
+           present(vc, animated: true, completion: nil)
+        }
+}
     
     
     

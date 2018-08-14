@@ -17,17 +17,19 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
     var audioRecorder:AVAudioRecorder!
     
     var progressTimer: Timer!
+    
+    var selectedFilePath:URL!
 
     @IBOutlet weak var startBtn: UIButton!
     @IBOutlet weak var currentTime: UILabel!
     
     @IBAction func record(_ sender: Any) {
         if audioRecorder == nil {
-            let filename = getFilePath(fileNumber: numberOfRecords + 1)
+           
             let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000,AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
             
             do{
-                audioRecorder = try AVAudioRecorder(url: filename, settings: settings)
+                audioRecorder = try AVAudioRecorder(url: selectedFilePath.appendingPathComponent("\(numberOfRecords + 1).m4a"), settings: settings)
                 audioRecorder.delegate = self as AVAudioRecorderDelegate
                 audioRecorder.record()
                 
@@ -64,6 +66,11 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("selectedFilePath는\(selectedFilePath)")
+        
+        if let fileNumber = UserDefaults.standard.object(forKey: "myRecordFileNumber") as? Int {
+            numberOfRecords = fileNumber
+        }
 
         // Do any additional setup after loading the view.
         
@@ -86,7 +93,7 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
         let filePath = documentDirectory.appendingPathComponent("\(fileNumber).m4a")
         return filePath
     }
-    
+   
     func displayAlert(title:String, message:String)
     {
         let alert = UIAlertController(title: title , message: message, preferredStyle: .alert)

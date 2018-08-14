@@ -149,7 +149,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="3R9-N3-1qM"/>
                         <barButtonItem title="녹음" id="tTE-7A-5jF">
                             <connections>
-                                <segue destination="YzG-nx-hBF" kind="presentation" id="0MC-81-bV6"/>
+                                <action selector="moveRecorder:" destination="ODA-Om-DfL" id="SZH-wP-fRO"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="K5k-31-qre"/>
@@ -163,7 +163,7 @@
         <!--Recorder View Controller-->
         <scene sceneID="26Y-Hh-ohc">
             <objects>
-                <viewController id="YzG-nx-hBF" customClass="RecorderViewController" customModule="mySection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="recorder" id="YzG-nx-hBF" customClass="RecorderViewController" customModule="mySection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CJO-og-nu8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

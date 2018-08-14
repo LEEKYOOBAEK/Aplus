@@ -12,39 +12,30 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    
-    struct Section {
-        var sectionName:String
-        var records:[RecordFile]
-    }
-    
-    var sectionArray:[Section] = [Section(sectionName: "폴더", records:[]),Section(sectionName: "음성녹음", records:[RecordFile(fileName: "음성녹음", fileSubtitle:nil)])]
-//    let recordFile1 = RecordFile(fileName: "음성녹음", fileSubtitle: nil)
-//    sectionArray[0].records.append(recordFile1)
+    var folderSection:[String] = []
+    var recordFileSection:[RecordFile] = []
+    var numberOfRecordsInHome:Int = 0
+    var folderCount:Int = 0
     
     
+   
     
     
-    func saveData() {
-        let filePath = getFilePath(fileName: "recordFiles.dat")
-        NSKeyedArchiver.archiveRootObject(sectionArray[0].records, toFile: filePath)
-    }
+//    func saveData() {
+//        let filePath = getFilePath(fileName: "recordFiles.dat")
+//        NSKeyedArchiver.archiveRootObject(sectionArray[0].records, toFile: filePath)
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //파일 저장할 저장소의 경로
-        let filePath = getFilePath(fileName: "recordFiles.dat")
         
-        if FileManager.default.fileExists(atPath: filePath) {
-            if let records = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [RecordFile] {
-                //파일 저장소에 저장한 파일이 있으면 불러오기
-                self.sectionArray[0].records = records
-            } else{
-                return
-                
-            }
-            
+       
+       if let newFolder = UserDefaults.standard.object(forKey: "myFolder") as? [String] {
+            self.folderSection = newFolder
         }
+        
+        self.folderCount = UserDefaults.standard.integer(forKey: "forderNumber")
+        print("폴더 수는 \(folderCount)")
 
     }
 
@@ -57,14 +48,17 @@ class TableViewController: UITableViewController {
        
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
             if alert.textFields?[0].text == "" {
-                let record1 = RecordFile(fileName: "음성녹음\(self.sectionArray[0].records.count + 1)", fileSubtitle: nil, fileDate: 0, fileLength: 0)
-                self.sectionArray[0].records.append(record1)
+                self.folderSection.append("Folder\(self.folderSection.count + 1)")
             }else {
-                let record1 = RecordFile(fileName: (alert.textFields?[0].text)!, fileSubtitle: nil, fileDate: 0, fileLength: 0)
-                self.sectionArray[0].records.append(record1)
+                self.folderSection.append((alert.textFields?[0].text)!)
             }
-            self.saveData()
+//            self.saveData()
+            UserDefaults.standard.set(self.folderSection, forKey: "myFolder")
+            self.folderCount += 1
+            UserDefaults.standard.set(self.folderCount, forKey: "forderNumber")
+            let newFilePath = createFolder(fileName: "folder\(self.folderCount)")
             self.tableView.reloadData()
+            print("새로운 폴더명은 \(newFilePath)")
         }
         alert.addAction(okAction)
         present(alert, animated: true, completion:nil)
@@ -80,17 +74,17 @@ class TableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return sectionArray.count
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-//        let array = sectionArray[section]
-//        print("array는\(array)")
-//        print("array의 count는\(array.records.count)")
-//        print("retuen값은\(array.records.count)")
-        return sectionArray[section].records.count
-        
+        if section == 0 {
+            return folderSection.count
+            
+        }else {
+            return numberOfRecordsInHome
+        }
+
     }
 
     
@@ -100,7 +94,11 @@ class TableViewController: UITableViewController {
         guard let myCell = cell as? MyTableViewCell else{
             return cell
         }
-        myCell.recordName.text = sectionArray[indexPath.section].records[indexPath.row].fileName
+        if indexPath.section == 0 {
+            myCell.recordName.text = folderSection[indexPath.row]
+        }else if indexPath.section != 0 {
+            myCell.recordName.text = "음성녹음\(indexPath.row + 1)"
+        }
 
         // Configure the cell...
 
@@ -108,17 +106,30 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionArray[section].sectionName
+        if section == 0 {
+            return "폴더"
+        }else  {
+            return "음성파일"
+        }
+      
+        
     }
     
     //파일 삭제하는 코드
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete{
-            sectionArray[0].records.remove(at: indexPath.row)
-            saveData()
+            
+            if indexPath.section == 0 {
+                folderSection.remove(at: indexPath.row)
+            } else {
+                
+            }
+            UserDefaults.standard.set(folderSection, forKey: "myFolder")
             tableView.reloadData()
         }
     }
+    
+    
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -128,10 +139,20 @@ class TableViewController: UITableViewController {
             self.navigationController?.show(vc, sender: nil)
             
             
-        } else if indexPath.section == 0 {
+//            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "")as? GreenViewController {
+//                vc.labelStr = ""
+//                self.present(vc,animated: true, completion:nil)
+//            }
+            
+            } else if indexPath.section == 0 {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "recordView")
-            self.navigationController?.show(vc, sender: nil)
+            if let vc = storyboard.instantiateViewController(withIdentifier: "recordView") as? RecordFileTableViewController {
+                let path = getFilePath()
+                let selectPath = path.appendingPathComponent("folder\(indexPath.row + 1)")
+                vc.selectedFilePath = selectPath
+                vc.selectedFolderName = self.folderSection[indexPath.row]
+                self.navigationController?.show(vc, sender: nil)
+                }
         }
         
     }
