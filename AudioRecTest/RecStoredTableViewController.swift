@@ -14,11 +14,17 @@ class RecStoredTableViewController: UITableViewController {
     
     var audioPlayer:AVAudioPlayer!
     
+  
+    
         
    
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        tableView.beginUpdates()
+//         tableView.deleteRows(at: IndexPath., with: <#T##UITableViewRowAnimation#>)
+//        tableView.endUpdates()
         
         if let number:Int = UserDefaults.standard.object(forKey: "myNumber") as? Int        //viewDidLoad에서 파일 불러와야 처음 들어갔을 떄 파일 뜸
         {
@@ -85,12 +91,17 @@ class RecStoredTableViewController: UITableViewController {
         {
 
         }
+        
     }
+     
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?)       //값을 전달push
-//    {
-//        var numOfRecords = numberOfRecords
-//    }
+   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)       //값을 전달push
+    {
+        var numOfRecords = numberOfRecords
+//        tableView.beginUpdates()
+//        tableView
+    }
 //
 
     /*
