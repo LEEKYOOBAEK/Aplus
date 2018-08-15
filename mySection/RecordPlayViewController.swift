@@ -22,9 +22,10 @@ class RecordPlayViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var memoTableView: UITableView!
     @IBOutlet weak var btnForward: UIButton!
     @IBOutlet weak var btnBackward: UIButton!
-    @IBOutlet weak var btnPlay: UIButton!
-    @IBOutlet weak var btnPause: UIButton!
-    @IBOutlet weak var btnStop: UIButton!
+    
+    @IBOutlet weak var btnPlay: UIBarButtonItem!
+    @IBOutlet weak var btnPause: UIBarButtonItem!
+    @IBOutlet weak var btnStop: UIBarButtonItem!
     @IBOutlet weak var lblEndTime: UILabel!
     @IBOutlet weak var lblCurrentTime: UILabel!
     @IBOutlet weak var slider: UISlider!
@@ -116,20 +117,26 @@ class RecordPlayViewController: UIViewController, AVAudioPlayerDelegate {
         //NSLog("Hi", args:CVarArgType...)
     }
     
-    @IBAction func btnPlayAudio(_ sender: UIButton) {
+    
+    @IBAction func btnPlayAudio(_ sender: UIBarButtonItem) {
         audioPlayer.play()
         setPlayButtons(false, pause: true, Stop: true)
     }
-    @IBAction func btnPauseAudio(_ sender: UIButton) {
+    
+    
+    
+    @IBAction func btnPauseAudio(_ sender: Any) {
         audioPlayer.pause()
         setPlayButtons(true, pause: false, Stop: true)
-    }
-    @IBAction func btnStopAudio(_ sender: UIButton) {
+     }
+    
+    @IBAction func btnStopAudio(_ sender: UIBarButtonItem) {
         audioPlayer.stop()
         audioPlayer.currentTime = 0
         lblCurrentTime.text = convertNSTimeInterval2String(0)
         setPlayButtons(true, pause: false, Stop: false)
     }
+
     @IBAction func changeAudioTime(_ sender: Any) {
         audioPlayer.play()
         audioPlayer.currentTime = TimeInterval(slider.value)
@@ -144,12 +151,15 @@ class RecordPlayViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     
-    @IBAction func btnBackwardAudio(_ sender: UIButton) {
+    
+    @IBAction func btnBackwardAudio(_ sender: UIBarButtonItem) {
         audioPlayer.play()
         audioPlayer.currentTime -= 5.0
     }
     
-    @IBAction func btnForwardAudio(_ sender: UIButton) {
+    
+    
+    @IBAction func btnForward(_ sender: UIBarButtonItem) {
         audioPlayer.play()
         audioPlayer.currentTime += 5.0
     }
