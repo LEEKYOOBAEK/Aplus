@@ -18,6 +18,7 @@ class RecordPlayViewController: UIViewController, AVAudioPlayerDelegate {
     let MAX_VOLUME : Float = 10.0
     let timePlayerSelector: Selector = #selector(RecordPlayViewController.updateSlider)
     
+    @IBOutlet weak var btnbackPage: UIBarButtonItem!
     @IBOutlet weak var memoTableView: UITableView!
     @IBOutlet weak var btnForward: UIButton!
     @IBOutlet weak var btnBackward: UIButton!
@@ -27,7 +28,9 @@ class RecordPlayViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var lblEndTime: UILabel!
     @IBOutlet weak var lblCurrentTime: UILabel!
     @IBOutlet weak var slider: UISlider!
-    @IBOutlet weak var slVolume: UISlider!
+    @IBOutlet weak var lblSpeed: UILabel!
+    @IBOutlet weak var slSpeed: UISlider!
+    
     
     
     
@@ -35,10 +38,12 @@ class RecordPlayViewController: UIViewController, AVAudioPlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         didMemoView()
+        
         initPlay()
+        audioPlayer.enableRate = true
         slider.maximumValue = Float(audioPlayer.duration)
         _ = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(RecordPlayViewController.updateSlider), userInfo: nil, repeats: true)
-        print(willPlayFilePath)
+        
 
         do{
             audioPlayer = try AVAudioPlayer(contentsOf: (willPlayFilePath)!)
@@ -50,6 +55,7 @@ class RecordPlayViewController: UIViewController, AVAudioPlayerDelegate {
 
         // Do any additional setup after loading the view.
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear")
@@ -67,16 +73,17 @@ class RecordPlayViewController: UIViewController, AVAudioPlayerDelegate {
             print("Error-initPlay: \(error)")
         }
         
-        slVolume.maximumValue = MAX_VOLUME
-        slVolume.value = 1.0
+        
         
         audioPlayer.delegate = self
         audioPlayer.prepareToPlay()
-        audioPlayer.volume = slVolume.value
+        audioPlayer.volume = 10.0
         
         lblEndTime.text = convertNSTimeInterval2String(audioPlayer.duration)
         lblCurrentTime.text = convertNSTimeInterval2String(0)
         setPlayButtons(true, pause: false, Stop: false)
+        
+        
     }
     
     func setPlayButtons(_ play:Bool, pause:Bool, Stop:Bool) {
@@ -131,6 +138,12 @@ class RecordPlayViewController: UIViewController, AVAudioPlayerDelegate {
         setPlayButtons(false, pause: true, Stop: true)
     }
     
+    @IBAction func slChangeSpeed(_ sender: UIButton) {
+        lblSpeed.text = String(format: "Speed: %.2f", slSpeed.value)
+        audioPlayer.rate = slSpeed.value
+    }
+    
+    
     @IBAction func btnBackwardAudio(_ sender: UIButton) {
         audioPlayer.play()
         audioPlayer.currentTime -= 5.0
@@ -150,8 +163,12 @@ class RecordPlayViewController: UIViewController, AVAudioPlayerDelegate {
         self.memoTableView.reloadData()
     }
 
-    
-    
+    @IBAction func backPage(_ sender: UIBarButtonItem) {
+        let backItem = btnbackPage
+        navigationItem.backBarButtonItem = backItem; self.navigationController?.popViewController(animated: true)
+//        self.dismiss(animated: true, completion: nil)
+        audioPlayer.pause()
+    }
     
     func didBtnPlayTime(_ sender: memoTableViewCell) {
         var realtime:Int?
@@ -185,7 +202,7 @@ class RecordPlayViewController: UIViewController, AVAudioPlayerDelegate {
         audioPlayer.stop()
         audioPlayer.currentTime = Double(realtime!)
         setPlayButtons(true, pause: false, Stop: false)
-        print("\(realtime)")
+        
         
         
         

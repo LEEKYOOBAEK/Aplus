@@ -264,9 +264,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bKV-mG-dCP">
-                                <rect key="frame" x="83" y="578" width="269" height="30"/>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.5" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="bKV-mG-dCP">
+                                <rect key="frame" x="156" y="578" width="198" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="slChangeSpeed:" destination="SRf-7G-Uzk" eventType="valueChanged" id="CLo-yO-akH"/>
+                                </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWC-sE-gWc">
                                 <rect key="frame" x="90" y="485" width="68" height="30"/>
@@ -284,17 +287,6 @@
                                     <action selector="btnForwardAudio:" destination="SRf-7G-Uzk" eventType="touchUpInside" id="xca-dO-30W"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEP-Jg-ygv">
-                                <rect key="frame" x="22" y="582" width="50" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="vwk-8X-bPr">
-                                <rect key="frame" x="31" y="405" width="311" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CurrentTime" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEK-tH-cPe">
                                 <rect key="frame" x="90" y="73" width="173" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -303,7 +295,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7LP-gE-0SB">
-                                <rect key="frame" x="16" y="126" width="343" height="271"/>
+                                <rect key="frame" x="16" y="126" width="343" height="308"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -353,12 +345,24 @@
                                     <outlet property="delegate" destination="SRf-7G-Uzk" id="YjC-SM-03t"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEP-Jg-ygv">
+                                <rect key="frame" x="16" y="578" width="50" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="yl4-U6-bL7"/>
                     </view>
                     <navigationItem key="navigationItem" title="재생화면" id="8Ht-f8-5UO">
-                        <barButtonItem key="rightBarButtonItem" title="북마크추가" id="GdO-xy-MZA">
+                        <barButtonItem key="leftBarButtonItem" title="❮ Back" id="qn8-MW-OYX">
+                            <connections>
+                                <action selector="backPage:" destination="SRf-7G-Uzk" id="r4y-qt-G6W"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="GdO-xy-MZA">
                             <connections>
                                 <action selector="addBookmark:" destination="SRf-7G-Uzk" id="zZF-wL-lZs"/>
                             </connections>
@@ -370,10 +374,12 @@
                         <outlet property="btnPause" destination="4DG-5J-MmS" id="wwO-bC-fYK"/>
                         <outlet property="btnPlay" destination="ngl-uu-3fP" id="RwR-r0-3OS"/>
                         <outlet property="btnStop" destination="X5f-FI-QLF" id="tpA-OD-n7m"/>
+                        <outlet property="btnbackPage" destination="qn8-MW-OYX" id="RQO-Gt-u34"/>
                         <outlet property="lblCurrentTime" destination="lEK-tH-cPe" id="Jdw-pH-3wY"/>
                         <outlet property="lblEndTime" destination="szc-dU-TCu" id="OlB-g2-KP1"/>
+                        <outlet property="lblSpeed" destination="DEP-Jg-ygv" id="KyX-Zj-D1r"/>
                         <outlet property="memoTableView" destination="7LP-gE-0SB" id="eFs-gc-dew"/>
-                        <outlet property="slVolume" destination="vwk-8X-bPr" id="TAS-IG-7C1"/>
+                        <outlet property="slSpeed" destination="bKV-mG-dCP" id="6GY-qG-Q5P"/>
                         <outlet property="slider" destination="6lV-lz-SkG" id="N7T-nF-ysB"/>
                     </connections>
                 </viewController>
