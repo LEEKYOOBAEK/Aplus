@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 protocol memoTableViewCellDelegate {
-    func didBtnPlayTime()
+    func didBtnPlayTime(_ sender: memoTableViewCell)
     func didSaveMemo()
     func didMemoView()
     func didMemoTextField(_ sender: memoTableViewCell)
@@ -37,6 +37,7 @@ class memoTableViewCell: UITableViewCell, AVAudioPlayerDelegate {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
+       // print("I`m selected")
         // Configure the view for the selected state
     }
     
@@ -61,12 +62,10 @@ class memoTableViewCell: UITableViewCell, AVAudioPlayerDelegate {
             memoTextField.text = memo1
             delegate?.didMemoView()
         }
-    
-   
-        
     }
     @IBAction func btnPlayTime(_ sender: Any) {
-        delegate?.didBtnPlayTime()
+        
+        delegate?.didBtnPlayTime(self)
     }
     
     @IBAction func saveMemo(_ sender: Any) {

@@ -76,8 +76,26 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
             return String(format: "%02d:%02d", min, sec)
         }
         
+        
     }
 
+    /*
+    func stringToInt(indexPath:IndexPath) -> Int {
+        if memos[indexPath.row].Title?.components(separatedBy: ":").count == 3 {
+            let hour = Int((memos[indexPath.row].Title?.components(separatedBy: ":")[0])!)!
+            let min = Int((memos[indexPath.row].Title?.components(separatedBy: ":")[1])!)!
+            let sec = Int((memos[indexPath.row].Title?.components(separatedBy: ":")[2])!)!
+            let time = hour * 3600 + min * 60 + sec
+            return time
+        } else {
+            let min = Int((memos[indexPath.row].Title?.components(separatedBy: ":")[0])!)!
+            let sec = Int((memos[indexPath.row].Title?.components(separatedBy: ":")[1])!)!
+            let time = min * 60 + sec
+            return time
+        }
+    }
+    */
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -145,6 +163,52 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         self.memoTableView.reloadData()
         
     }
+    func didBtnPlayTime(_ sender: memoTableViewCell) {
+        var realtime:Int?
+        
+//        if memos[0].Title?.components(separatedBy: ":").count == 3 {
+//            let hour = Int((memos[0].Title?.components(separatedBy: ":")[0])!)!
+//            let min = Int((memos[0].Title?.components(separatedBy: ":")[1])!)!
+//            let sec = Int((memos[0].Title?.components(separatedBy: ":")[2])!)!
+//            let time = hour * 3600 + min * 60 + sec
+//            realtime = time
+//        } else {
+//            let min = Int((memos[0].Title?.components(separatedBy: ":")[0])!)!
+//            let sec = Int((memos[0].Title?.components(separatedBy: ":")[1])!)!
+//            let time = min * 60 + sec
+//            realtime = time
+//        }
+        
+        if memos[0].Title?.components(separatedBy: ":").count == 3 {
+            let hour = Int((memos[0].Title?.components(separatedBy: ":")[0])!)!
+            let min = Int((memos[0].Title?.components(separatedBy: ":")[1])!)!
+            let sec = Int((memos[0].Title?.components(separatedBy: ":")[2])!)!
+            let time = hour * 3600 + min * 60 + sec
+            realtime = time
+        } else {
+            let min = Int((memos[0].Title?.components(separatedBy: ":")[0])!)!
+            let sec = Int((memos[0].Title?.components(separatedBy: ":")[1])!)!
+            let time = min * 60 + sec
+            realtime = time
+        }
+
+        audioPlayer.stop()
+        audioPlayer.currentTime = Double(realtime!)
+        setPlayButtons(true, pause: false, Stop: false)
+        print("\(realtime)")
+        
+        
+        
+        
+        
+        
+        // let aaa:TimeInterval = 13.0
+        // sender.btnMemoTime.titleLabel?.text
+        // audioPlayer.stop()
+        // audioPlayer.play(atTime: aaa)
+       
+        
+    }
 }
 
 
@@ -158,8 +222,16 @@ extension ViewController: memoTableViewCellDelegate {
     }
     func didSaveMemo() {
     }
-    func didBtnPlayTime() {
+    /*
+    func didBtnPlayTime(_ sender: memoTableViewCell) {
+        // let aaa:TimeInterval = 13.0
+        // sender.btnMemoTime.titleLabel?.text
+        // audioPlayer.stop()
+        // audioPlayer.play(atTime: aaa)
+        let aaa = ViewController()
+        print(memos.)
     }
+    */
 }
 
 
