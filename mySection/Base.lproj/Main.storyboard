@@ -116,6 +116,7 @@
                     </view>
                     <connections>
                         <outlet property="currentTime" destination="nGn-Mi-tX9" id="tXm-cz-EUc"/>
+                        <outlet property="saveButton" destination="lwL-7c-8Av" id="n5W-9m-htX"/>
                         <outlet property="startBtn" destination="cAu-4b-2M6" id="h40-z6-i5b"/>
                     </connections>
                 </viewController>
@@ -201,6 +202,7 @@
                     </view>
                     <connections>
                         <outlet property="currentTime" destination="UvG-6N-2HS" id="9L5-Qt-QSM"/>
+                        <outlet property="saveButton" destination="qMT-Vh-RHy" id="G0x-KE-F9N"/>
                         <outlet property="startBtn" destination="Pn8-U3-6Fq" id="P95-2b-5TK"/>
                     </connections>
                 </viewController>
