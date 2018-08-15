@@ -38,8 +38,6 @@ class memoTableViewCell: UITableViewCell, AVAudioPlayerDelegate {
     func setMemo(memo: Memo) {
         memoTextField.text = memo.memoText
         btnMemoTime.setTitle(memo.Title,for: .normal)
-        print(memo.Title)
-        print(memo.memoText)
     }
     
     func convertNSTimeInterval2String(_ time:TimeInterval)-> String {
