@@ -57,7 +57,7 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="XvI-zC-1bw"/>
-                        <barButtonItem title="녹음" id="WeM-hu-BGJ">
+                        <barButtonItem title="녹음" image="recordicon" id="WeM-hu-BGJ">
                             <connections>
                                 <action selector="moveRecorder:" destination="T6L-0w-aTQ" id="dwi-Ox-iRr"/>
                             </connections>
@@ -344,4 +344,7 @@
             <point key="canvasLocation" x="-927.20000000000005" y="33.733133433283363"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="recordicon" width="33" height="33"/>
+    </resources>
 </document>
