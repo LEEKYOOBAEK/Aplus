@@ -57,7 +57,8 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="XvI-zC-1bw"/>
-                        <barButtonItem title="녹음" image="recordicon" id="WeM-hu-BGJ">
+                        <barButtonItem title="녹음" image="icons8-record-64-3" id="WeM-hu-BGJ">
+                            <color key="tintColor" red="0.99607843137254903" green="0.14401534589902634" blue="0.065741526969505373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="moveRecorder:" destination="T6L-0w-aTQ" id="dwi-Ox-iRr"/>
                             </connections>
@@ -85,19 +86,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAu-4b-2M6">
-                                <rect key="frame" x="79" y="595" width="102" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAu-4b-2M6">
+                                <rect key="frame" x="155" y="603" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="start recording"/>
+                                <state key="normal" title="start recording" image="icons8-record-64-3"/>
                                 <connections>
                                     <action selector="record:" destination="8RE-DT-KE4" eventType="touchUpInside" id="6Vd-WS-viA"/>
                                     <action selector="record:" destination="YzG-nx-hBF" eventType="touchUpInside" id="MOw-PO-0U6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lwL-7c-8Av">
-                                <rect key="frame" x="234" y="595" width="34" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lwL-7c-8Av">
+                                <rect key="frame" x="257" y="603" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
+                                <state key="normal" title="Save" image="icons8-stop-65"/>
                                 <connections>
                                     <action selector="save:" destination="8RE-DT-KE4" eventType="touchUpInside" id="5ce-E1-tRN"/>
                                     <action selector="save:" destination="YzG-nx-hBF" eventType="touchUpInside" id="T6l-Ca-et5"/>
@@ -125,6 +126,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dy9-Ga-i7K">
+                                <rect key="frame" x="53" y="603" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="icons8-play-64-2"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wA4-iR-0l3">
+                                <rect key="frame" x="0.0" y="603" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="icons8-pause-96"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="PqT-R3-Qkj"/>
@@ -170,7 +181,8 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="3R9-N3-1qM"/>
-                        <barButtonItem title="녹음" id="tTE-7A-5jF">
+                        <barButtonItem title="녹음" image="icons8-record-64-3" id="tTE-7A-5jF">
+                            <color key="tintColor" red="0.99607843137254903" green="0.14401534589902634" blue="0.065741526969505373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="moveRecorder:" destination="ODA-Om-DfL" id="SZH-wP-fRO"/>
                             </connections>
@@ -192,18 +204,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pn8-U3-6Fq">
-                                <rect key="frame" x="123" y="603" width="102" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pn8-U3-6Fq">
+                                <rect key="frame" x="155" y="603" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="start recording"/>
+                                <state key="normal" title="start recording" image="icons8-record-64-3"/>
                                 <connections>
                                     <action selector="record:" destination="YzG-nx-hBF" eventType="touchUpInside" id="6Lx-cU-OgP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMT-Vh-RHy">
-                                <rect key="frame" x="288" y="603" width="34" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMT-Vh-RHy">
+                                <rect key="frame" x="257" y="603" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
+                                <state key="normal" title="Save" image="icons8-stop-65"/>
                                 <connections>
                                     <action selector="save:" destination="YzG-nx-hBF" eventType="touchUpInside" id="FAQ-J1-IqH"/>
                                 </connections>
@@ -239,6 +251,16 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAj-D7-HWD">
+                                <rect key="frame" x="55" y="600" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="icons8-play-64-2"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TlW-Uw-7c5">
+                                <rect key="frame" x="0.0" y="600" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="icons8-pause-96"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Qdo-Du-Fxd"/>
@@ -462,6 +484,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="recordicon" width="33" height="33"/>
+        <image name="icons8-pause-96" width="96" height="96"/>
+        <image name="icons8-play-64-2" width="64" height="64"/>
+        <image name="icons8-record-64-3" width="64" height="64"/>
+        <image name="icons8-stop-65" width="64" height="64"/>
     </resources>
 </document>
