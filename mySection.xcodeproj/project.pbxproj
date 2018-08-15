@@ -17,6 +17,8 @@
 		D0A91503212060E90050D3AF /* RecordPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A91502212060E90050D3AF /* RecordPlayViewController.swift */; };
 		D0C4C83D211EF983000DBDE4 /* RecordFileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4C83C211EF983000DBDE4 /* RecordFileTableViewController.swift */; };
 		D0C4C83F211F1A88000DBDE4 /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4C83E211F1A88000DBDE4 /* RecorderViewController.swift */; };
+		D0F2AFAE2124951500767F57 /* memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2AFAD2124951500767F57 /* memo.swift */; };
+		D0F2AFB02124954000767F57 /* memoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2AFAF2124954000767F57 /* memoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		D0A91502212060E90050D3AF /* RecordPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPlayViewController.swift; sourceTree = "<group>"; };
 		D0C4C83C211EF983000DBDE4 /* RecordFileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFileTableViewController.swift; sourceTree = "<group>"; };
 		D0C4C83E211F1A88000DBDE4 /* RecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
+		D0F2AFAD2124951500767F57 /* memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memo.swift; sourceTree = "<group>"; };
+		D0F2AFAF2124954000767F57 /* memoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				D0C4C83C211EF983000DBDE4 /* RecordFileTableViewController.swift */,
 				D0C4C83E211F1A88000DBDE4 /* RecorderViewController.swift */,
 				D0A91502212060E90050D3AF /* RecordPlayViewController.swift */,
+				D0F2AFAF2124954000767F57 /* memoTableViewCell.swift */,
+				D0F2AFAD2124951500767F57 /* memo.swift */,
 			);
 			path = mySection;
 			sourceTree = "<group>";
@@ -150,9 +156,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0F2AFB02124954000767F57 /* memoTableViewCell.swift in Sources */,
 				D029EA03211AF22A005419CB /* mySection.xcdatamodeld in Sources */,
 				D029EA14211AF770005419CB /* RecordFile.swift in Sources */,
 				D029E9FB211AF22A005419CB /* AppDelegate.swift in Sources */,
+				D0F2AFAE2124951500767F57 /* memo.swift in Sources */,
 				D0A91503212060E90050D3AF /* RecordPlayViewController.swift in Sources */,
 				D029EA10211AF32C005419CB /* TableViewController.swift in Sources */,
 				D0C4C83F211F1A88000DBDE4 /* RecorderViewController.swift in Sources */,
