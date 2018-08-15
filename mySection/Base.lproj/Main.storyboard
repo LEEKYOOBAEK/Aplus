@@ -20,17 +20,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="80" id="R6h-yv-oRr" customClass="MyTableViewCell" customModule="mySection" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="100" id="R6h-yv-oRr" customClass="MyTableViewCell" customModule="mySection" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R6h-yv-oRr" id="R9K-HT-2jh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TD0-vX-76e">
-                                            <rect key="frame" x="16" y="5" width="335" height="69"/>
+                                            <rect key="frame" x="16" y="15" width="335" height="69"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="335" id="A4y-tH-2xZ"/>
+                                                <constraint firstAttribute="width" constant="335" id="mGj-4R-hkf"/>
+                                                <constraint firstAttribute="height" constant="69" id="ncD-rf-KiS"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <nil key="textColor"/>
@@ -38,10 +39,10 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="TD0-vX-76e" firstAttribute="leading" secondItem="R9K-HT-2jh" secondAttribute="leadingMargin" id="Dm1-0F-FlD"/>
-                                        <constraint firstItem="TD0-vX-76e" firstAttribute="top" secondItem="R9K-HT-2jh" secondAttribute="topMargin" constant="-6" id="Msm-lg-Qem"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="TD0-vX-76e" secondAttribute="trailing" constant="8" id="UMU-O2-ins"/>
-                                        <constraint firstItem="TD0-vX-76e" firstAttribute="centerY" secondItem="R9K-HT-2jh" secondAttribute="centerY" id="VCZ-v8-SJ2"/>
+                                        <constraint firstItem="TD0-vX-76e" firstAttribute="leading" secondItem="R9K-HT-2jh" secondAttribute="leadingMargin" id="IA9-9z-Gen"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="TD0-vX-76e" secondAttribute="trailing" constant="8" id="XQ3-E8-gW8"/>
+                                        <constraint firstItem="TD0-vX-76e" firstAttribute="top" secondItem="R9K-HT-2jh" secondAttribute="topMargin" constant="4" id="i5a-PR-8dV"/>
+                                        <constraint firstItem="TD0-vX-76e" firstAttribute="centerY" secondItem="R9K-HT-2jh" secondAttribute="centerY" id="oCf-NI-x8O"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -56,7 +57,7 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="XvI-zC-1bw"/>
-                        <barButtonItem title="녹음" image="recordIcon" id="WeM-hu-BGJ">
+                        <barButtonItem title="녹음" id="WeM-hu-BGJ">
                             <connections>
                                 <action selector="moveRecorder:" destination="T6L-0w-aTQ" id="dwi-Ox-iRr"/>
                             </connections>
@@ -343,7 +344,4 @@
             <point key="canvasLocation" x="-927.20000000000005" y="33.733133433283363"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="recordIcon" width="33" height="33"/>
-    </resources>
 </document>
