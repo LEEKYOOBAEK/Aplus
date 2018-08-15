@@ -145,7 +145,19 @@ class TableViewController: UITableViewController {
             if indexPath.section == 0 {
                 folderSection.remove(at: indexPath.row)
             } else {
-                
+                do{
+                 let dirContent = try FileManager.default.contentsOfDirectory(at:basicFolder, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+                    let selectFile = dirContent[indexPath.row]
+                    print("지울 파일은\(selectFile)")
+                    do {
+                        try FileManager.default.removeItem(at: selectFile)
+                    }catch{
+                        print("cannot delete")
+                        return
+                    }
+                }catch {
+                    
+                }
             }
             UserDefaults.standard.set(folderSection, forKey: "myFolder")
             tableView.reloadData()
@@ -171,6 +183,7 @@ class TableViewController: UITableViewController {
                 do {
                     let dirContent = try FileManager.default.contentsOfDirectory(at: basicFolder, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
                     let filePath = dirContent[indexPath.row]
+                    print("재생할 파일은 \(filePath)")
                     vc.willPlayFilePath = filePath
             }catch{
                 return
