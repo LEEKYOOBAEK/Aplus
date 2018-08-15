@@ -12,6 +12,8 @@ import AVFoundation
 protocol memoTableViewCellDelegate {
     func didBtnPlayTime()
     func didSaveMemo()
+    func didMemoView()
+    func didMemoTextField(_ sender: memoTableViewCell)
 }
 
 
@@ -19,10 +21,14 @@ class memoTableViewCell: UITableViewCell, AVAudioPlayerDelegate {
 
     var audioPlayer: AVAudioPlayer!
     var delegate: memoTableViewCellDelegate?
-   
+    var memohaza :String?
     @IBOutlet weak var btnMemoTime: UIButton!
     @IBOutlet weak var memoTextField: UITextField!
 
+    @IBAction func memoTextField(_ sender: UITextField) {
+        delegate?.didMemoTextField(self)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -50,12 +56,26 @@ class memoTableViewCell: UITableViewCell, AVAudioPlayerDelegate {
         }
         
     }
+    func memoView() {
+        if let memo1 = UserDefaults.standard.object(forKey: "memogaza") as? String{
+            memoTextField.text = memo1
+            delegate?.didMemoView()
+        }
     
+   
+        
+    }
     @IBAction func btnPlayTime(_ sender: Any) {
         delegate?.didBtnPlayTime()
     }
+    
     @IBAction func saveMemo(_ sender: Any) {
-        UserDefaults.standard.object(forKey: "MemoText")
+        self.memohaza = memoTextField.text!
+        UserDefaults.standard.set(self.memohaza, forKey: "memogaza")
+        memoView()
+        print(memoTextField.text)
         delegate?.didSaveMemo()
+        
+        
     }
 }

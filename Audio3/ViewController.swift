@@ -11,6 +11,7 @@ import AVFoundation
 
 class ViewController: UIViewController, AVAudioPlayerDelegate {
    
+   
     var memos : [Memo] = []
     
     var audioPlayer : AVAudioPlayer!
@@ -28,12 +29,16 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var slider: UISlider!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        didMemoView()
         audioFile = Bundle.main.url(forResource: "런스위프트", withExtension : "m4a")
         print(audioFile)
         initPlay()
         slider.maximumValue = Float(audioPlayer.duration)
         _ = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.updateSlider), userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
     }
 
     func initPlay() {
@@ -131,14 +136,26 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
             Float(audioPlayer.currentTime)
         //NSLog("Hi", args:CVarArgType...)
     }
+    
     @IBAction func addBookmark(_ sender: UIBarButtonItem) {
-        memos.append(Memo(memoText: nil, Title: lblCurrentTime.text))
+        didSaveMemo()
+        didMemoView()
+        memos.append(Memo(memoText: "", Title: lblCurrentTime.text))
+      
         self.memoTableView.reloadData()
+        
     }
 }
 
 
 extension ViewController: memoTableViewCellDelegate {
+    func didMemoTextField(_ sender: memoTableViewCell) {
+        guard let indexPath = memoTableView.indexPath(for: sender) else { return }
+        memos[indexPath.row].memoText = sender.memoTextField.text
+    }
+    
+    func didMemoView() {
+    }
     func didSaveMemo() {
     }
     func didBtnPlayTime() {
