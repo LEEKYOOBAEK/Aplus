@@ -23,34 +23,74 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var startBtn: UIButton!
     @IBOutlet weak var currentTime: UILabel!
     
+    @IBOutlet weak var rePlayButton: UIButton!
+    
+    @IBOutlet weak var stopRecordingBtn: UIButton!
+    
+    @IBAction func stopRecording(_ sender: Any) {
+        audioRecorder.pause()
+        startBtn.isHidden = false
+        stopRecordingBtn.isHidden = true
+        
+    }
+    
     @IBAction func record(_ sender: Any) {
         if audioRecorder == nil {
            
             let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000,AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
             
             do{
+                startBtn.isHidden = true
+                stopRecordingBtn.isHidden = false
+                
+                saveButton.isHidden = false
+                
+                rePlayButton.isHidden = false
+                rePlayButton.isEnabled = false
                 saveButton.isEnabled = true
                 
                 audioRecorder = try AVAudioRecorder(url: selectedFilePath.appendingPathComponent("\(numberOfRecords + 1).m4a"), settings: settings)
                 audioRecorder.delegate = self as AVAudioRecorderDelegate
                 audioRecorder.record()
                 
-                startBtn.setTitle("Stop Recording", for: .normal)
+//                startBtn.setTitle("Stop Recording", for: .normal)
                 progressTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector:timeRecordSelector, userInfo:nil, repeats:true)
             }catch {
                 displayAlert(title: "Error", message: "Recording failed")
             }
         } else {
             if audioRecorder.isRecording == true {
-                do { audioRecorder.pause()
+//                if stopRecordingBtn.isSelected == true {
+//                    startBtn.isHidden = false
+//                    stopRecordingBtn.isHidden = true
+                
+                do      //pause
+                {
+                    stopRecording((Any).self)
+                    
+//                    startBtn.isHidden = true
+                    stopRecordingBtn.isHidden = true
+                    audioRecorder.pause()
+                    rePlayButton.isEnabled = true
+                    
                     startBtn.setTitle("Start Recording", for: .normal)
                     
                 }
             }else if audioRecorder.isRecording == false {
-                do{
+                startBtn.isHidden = false
+                do      //start
+                {
+                    startBtn.isHidden = true
+                    stopRecordingBtn.isHidden = false
+                    
+                    rePlayButton.isEnabled = false
                     audioRecorder.record()
                     startBtn.setTitle("Stop Recording", for: .normal)
                 }
+//                }else{
+//                    stopRecordingBtn.isHidden = true
+//                }
+                
             }
         }
     }
@@ -109,8 +149,9 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
             //            let alert2 = UIAlertController(title: "녹음 삭제", message: "\(self.alert.TextField?[0].text)을(를) 삭제 하겠습니까?", preferredStyle: .alert)
         }
         
-        alert.addAction(saveAction)     //'저장'액션 추가
+        
         alert.addAction(deleteAction)   //'삭제'액션 추가
+        alert.addAction(saveAction)     //'저장'액션 추가
         self.present(alert, animated: true, completion: nil)    //alert 나타나도록
         
         
@@ -123,8 +164,9 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        saveButton.isEnabled = false
+        stopRecordingBtn.isHidden = true
+        rePlayButton.isHidden = true
+        saveButton.isHidden = true
         print("selectedFilePath는\(selectedFilePath)")
         
         if let fileNumber = UserDefaults.standard.object(forKey: "myRecordFileNumber") as? Int {
