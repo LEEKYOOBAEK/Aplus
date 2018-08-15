@@ -18,12 +18,11 @@ protocol memoTableViewCellDelegate {
 class memoTableViewCell: UITableViewCell, AVAudioPlayerDelegate {
 
     var audioPlayer: AVAudioPlayer!
-  
+    var delegate: memoTableViewCellDelegate?
+   
     @IBOutlet weak var btnMemoTime: UIButton!
     @IBOutlet weak var memoTextField: UITextField!
 
-    var delegate: memoTableViewCellDelegate?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -56,11 +55,7 @@ class memoTableViewCell: UITableViewCell, AVAudioPlayerDelegate {
         delegate?.didBtnPlayTime()
     }
     @IBAction func saveMemo(_ sender: Any) {
-        
-        
         UserDefaults.standard.object(forKey: "MemoText")
-        
-        
         delegate?.didSaveMemo()
     }
 }

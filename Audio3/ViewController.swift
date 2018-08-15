@@ -9,21 +9,14 @@
 import UIKit
 import AVFoundation
 
-
-
-
 class ViewController: UIViewController, AVAudioPlayerDelegate {
    
     var memos : [Memo] = []
     
     var audioPlayer : AVAudioPlayer!
     var audioFile : URL!
-
-   
     let MAX_VOLUME : Float = 10.0
     let timePlayerSelector: Selector = #selector(ViewController.updateSlider)
-
-    
     
     @IBOutlet weak var memoTableView: UITableView!
     @IBOutlet weak var lblCurrentTime: UILabel!
@@ -35,40 +28,14 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var slider: UISlider!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        
+
         audioFile = Bundle.main.url(forResource: "런스위프트", withExtension : "m4a")
         print(audioFile)
         initPlay()
-        
         slider.maximumValue = Float(audioPlayer.duration)
-        
-        //var Timers =  Timer.scheduledTimeWithTimeInterval(
         _ = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.updateSlider), userInfo: nil, repeats: true)
     }
-    
-  
-    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return memo.count
-//
-//    }
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//        guard let myCell = cell as? PlayTableView else{
-//            return cell
-//        }
-//        myCell.reloadData()
-//
-//
-//        return cell
-//    }
-    
+
     func initPlay() {
         do{
             audioPlayer = try AVAudioPlayer(contentsOf: audioFile)
@@ -79,8 +46,6 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         slVolume.maximumValue = MAX_VOLUME
         slVolume.value = 1.0
        
-        
-        
         audioPlayer.delegate = self
         audioPlayer.prepareToPlay()
         audioPlayer.volume = slVolume.value
@@ -88,13 +53,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         lblEndTime.text = convertNSTimeInterval2String(audioPlayer.duration)
         lblCurrentTime.text = convertNSTimeInterval2String(0)
         setPlayButtons(true, pause: false, Stop: false)
-        /*
-        btnPlay.isEnabled = true
-        btnPause.isEnabled = false
-        btnStop.isEnabled = false
-        */
     }
-    
     
     func setPlayButtons(_ play:Bool, pause:Bool, Stop:Bool) {
         btnPlay.isEnabled = play
@@ -126,8 +85,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
    
         
     }
-    
- 
+
     @IBAction func btnPauseAudio(_ sender: UIButton) {
         
         //audioPlayer.pause()
@@ -140,6 +98,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         
         
     }
+    
     @IBAction func btnStopAudio(_ sender: UIButton) {
         audioPlayer.stop()
         audioPlayer.currentTime = 0
@@ -155,6 +114,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
        
         setPlayButtons(true, pause: false, Stop: false)
     }
+    
     @IBAction func changeAudioTime(_ sender: Any) {
         
         audioPlayer.play()
@@ -172,28 +132,19 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         //NSLog("Hi", args:CVarArgType...)
     }
     @IBAction func addBookmark(_ sender: UIBarButtonItem) {
-        
         memos.append(Memo(memoText: nil, Title: lblCurrentTime.text))
-        
         self.memoTableView.reloadData()
     }
-    
-   
-    
 }
+
 
 extension ViewController: memoTableViewCellDelegate {
     func didSaveMemo() {
-        
-        
     }
-    
-
     func didBtnPlayTime() {
-        
-        
     }
 }
+
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -207,69 +158,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         guard let myCell = cell as? memoTableViewCell else{
             return cell
         }
-        
         let memo = memos[indexPath.row]
-        
         myCell.setMemo(memo: memo)
         myCell.delegate = self
-
-       
-        
         return myCell
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var memo:[String] = []
-//
-//class PlayTableViewCell : UITableViewCell,AVAudioPlayerDelegate {
-//
-//
-//
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-//
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return memo.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//
-//        return cell
-//        // Configure the cell...
-//    }
-//
-//    func convertNSTimeInterval2String(_ time:TimeInterval)-> String {
-//        let min = Int(time/60)
-//        let sec = Int(time.truncatingRemainder(dividingBy: 60))
-//        let strTime =  String(format : "%02d:%02d", min, sec)
-//        return strTime
-//    }
-//}
 
 
