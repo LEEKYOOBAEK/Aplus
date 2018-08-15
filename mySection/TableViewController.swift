@@ -29,8 +29,7 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tableView.reloadData()
+        print("home화면 viewDidLoad")
         
        
        if let newFolder = UserDefaults.standard.object(forKey: "myFolder") as? [String] {
@@ -42,6 +41,17 @@ class TableViewController: UITableViewController {
         
         
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("home화면 viewWillAppear")
+        self.tableView.reloadData()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("home화면 viewDidAppear")
+        
     }
 
     @IBAction func addFolder(_ sender: Any) {
