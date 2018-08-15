@@ -38,7 +38,7 @@
                                                         <action selector="btnPlayTime:" destination="hej-4p-tY3" eventType="touchUpInside" id="pqr-Zm-DIG"/>
                                                     </connections>
                                                 </button>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="St5-Ia-PTz">
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="메모를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="St5-Ia-PTz">
                                                     <rect key="frame" x="73" y="12" width="255" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
@@ -46,6 +46,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="saveMemo:" destination="hej-4p-tY3" eventType="editingChanged" id="B2l-k5-cys"/>
+                                                        <outlet property="delegate" destination="upz-r2-bnC" id="27a-R9-UF4"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>

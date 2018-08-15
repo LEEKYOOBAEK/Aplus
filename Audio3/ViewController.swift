@@ -173,7 +173,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     }
     @IBAction func addBookmark(_ sender: UIBarButtonItem) {
         
-        memos.append(Memo(memoText: "(\(self.memos.count + 1))." + "", Title: lblCurrentTime.text))
+        memos.append(Memo(memoText: nil, Title: lblCurrentTime.text))
         
         self.memoTableView.reloadData()
     }
