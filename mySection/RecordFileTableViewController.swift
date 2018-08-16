@@ -62,6 +62,7 @@ class RecordFileTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         cell.textLabel?.text = selectedFolderName + "." + String(indexPath.row + 1)
+        self.navigationItem.title = selectedFolderName
         
 
         // Configure the cell...
