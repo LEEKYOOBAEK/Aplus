@@ -60,15 +60,11 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
             }
         } else {
             if audioRecorder.isRecording == true {
-//                if stopRecordingBtn.isSelected == true {
-//                    startBtn.isHidden = false
-//                    stopRecordingBtn.isHidden = true
-                
+
                 do      //pause
                 {
                     stopRecording((Any).self)
                     
-//                    startBtn.isHidden = true
                     stopRecordingBtn.isHidden = true
                     audioRecorder.pause()
                     rePlayButton.isEnabled = true
@@ -87,10 +83,7 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
                     audioRecorder.record()
                     startBtn.setTitle("Stop Recording", for: .normal)
                 }
-//                }else{
-//                    stopRecordingBtn.isHidden = true
-//                }
-                
+
             }
         }
     }
