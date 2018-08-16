@@ -39,7 +39,6 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
            
             let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000,AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
             
-            do{
                 startBtn.isHidden = true
                 stopRecordingBtn.isHidden = false
                 
@@ -48,7 +47,7 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
                 rePlayButton.isHidden = false
                 rePlayButton.isEnabled = false
                 saveButton.isEnabled = true
-                
+                do{
                 audioRecorder = try AVAudioRecorder(url: selectedFilePath.appendingPathComponent("\(numberOfRecords + 1).m4a"), settings: settings)
                 audioRecorder.delegate = self as AVAudioRecorderDelegate
                 audioRecorder.record()
@@ -61,8 +60,7 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
         } else {
             if audioRecorder.isRecording == true {
 
-                do      //pause
-                {
+                do{
                     stopRecording((Any).self)
                     
                     stopRecordingBtn.isHidden = true
