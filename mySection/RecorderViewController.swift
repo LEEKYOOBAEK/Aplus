@@ -158,7 +158,7 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
         stopRecordingBtn.isHidden = true
         rePlayButton.isHidden = true
         saveButton.isHidden = true
-        print("selectedFilePath는\(selectedFilePath)")
+        print("selectedFilePath는\(String(describing: selectedFilePath))")
         
         if let fileNumber = UserDefaults.standard.object(forKey: "myRecordFileNumber") as? Int {
             numberOfRecords = fileNumber

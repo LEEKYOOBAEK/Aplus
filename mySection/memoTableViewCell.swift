@@ -71,7 +71,7 @@ class memoTableViewCell: UITableViewCell, AVAudioPlayerDelegate {
         self.memohaza = memoTextField.text!
         UserDefaults.standard.set(self.memohaza, forKey: "memogaza")
         memoView()
-        print(memoTextField.text)
+        print(memoTextField.text!)
         delegate?.didSaveMemo()
     }
     
